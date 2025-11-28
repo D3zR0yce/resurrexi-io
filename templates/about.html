@@ -1,141 +1,123 @@
 {% extends "base.html" %}
 
 {% block title %}About - Resurrexi Labs{% endblock %}
-{% block description %}Research infrastructure exploring adversarial systems dynamics across AI, political economy, and computational psychology{% endblock %}
+{% block description %}Computational research division of Farzulla Research - adversarial systems analysis, distributed infrastructure{% endblock %}
 
 {% block content %}
-<hgroup>
+<section class="hero">
     <h1>About Resurrexi Labs</h1>
-    <p>Adversarial systems research infrastructure</p>
-</hgroup>
+    <p class="tagline">Computational Research Division</p>
+    <p class="lead">
+        Research infrastructure for adversarial systems analysis. Part of 
+        <a href="https://farzulla.org" target="_blank">Farzulla Research</a>.
+    </p>
+</section>
 
+<!-- Mission -->
 <section id="mission">
     <h2>Mission</h2>
     <p>
-        Resurrexi Labs investigates <strong>adversarial systems</strong>—environments where competing interests generate structural conflict—across AI safety, political economy, computational psychology, and infrastructure engineering. The unifying framework treats all domains as adversarial environments where optimal outcomes require balancing competing interests rather than eliminating conflict.
+        Resurrexi Labs builds and operates distributed infrastructure for computational experiments 
+        in adversarial systems—environments where competing interests generate structural conflict. 
+        We support research across AI alignment, autonomous agents, offensive security, and 
+        large-scale computational simulations.
     </p>
     <p>
-        Research spans theoretical frameworks (Doctrine of Consensual Sovereignty), empirical analysis (cryptocurrency event studies, offshore finance), computational validation (trauma as maladaptive learning), and infrastructure engineering (deliberately heterogeneous distributed systems).
+        The unifying framework treats all domains as adversarial environments where optimal outcomes 
+        require balancing competing interests rather than eliminating conflict.
     </p>
 </section>
 
-<section id="philosophy">
-    <h2>Research Philosophy</h2>
-    <blockquote>
-        "Production-grade research infrastructure on deliberately heterogeneous hardware—because understanding failure modes requires systems that occasionally fail."
-    </blockquote>
-
-    <h3>Frankencluster Philosophy</h3>
+<!-- Relationship to Farzulla Research -->
+<section id="relationship">
+    <h2>Relationship to Farzulla Research</h2>
     <p>
-        Building distributed systems from scavenged hardware teaches resource heterogeneity, failure domains, and storage topology in ways cloud providers abstract away. This isn't a compromise—it's a research methodology.
-    </p>
-
-    <h4>Core Principles</h4>
-    <ul>
-        <li><strong>Heterogeneity as Feature:</strong> Mixed AMD Ryzen 9 (9900X, 5900X, HX370), Intel i7/i5, and potato-tier Celeron processors create real-world adversarial conditions. Scheduling across disparate compute exposes assumptions homogeneous clouds hide.</li>
-        <li><strong>Failure as Learning:</strong> Systems that occasionally fail teach failure modes. Cloud providers abstract away the interesting parts—storage topology, network partitions, resource contention under heterogeneous load.</li>
-        <li><strong>"Because I Can" as Valid Research:</strong> Cross-chassis GPU power delivery (7800 XT in PurrPower powered by SudoSenpai's PSU) started as "can we?" and became "what does this teach us about power delivery, PCIe topology, and system integration?"</li>
-        <li><strong>Intentional Vulnerability:</strong> VeryVuln exists specifically to be compromised—a legitimate target for red team experiments rather than borrowed production systems.</li>
-    </ul>
-
-    <h4>Notable Achievements</h4>
-    <ul>
-        <li>Dual GPU inference (7900 XTX + 7800 XT) with cross-chassis power delivery—185W drawn from external PSU during inference</li>
-        <li>PCIe x8/x8 bifurcation validated via upstream port inspection (not x16/x16 as lspci initially suggested)</li>
-        <li>Custom StorageClass with node affinity to prevent flash drive murder via random provisioning</li>
-        <li>WireGuard tunnel enabling cluster access from Azerbaijan during travel</li>
-    </ul>
-
-    <p>
-        <strong>Interdisciplinary by Default:</strong> Solutions emerge from connecting disparate domains. Finance background informs security research (risk modeling = threat modeling, portfolio optimization = resource allocation). 20+ years of varied interests enable pattern recognition across disciplines.
+        <strong>Farzulla Research</strong> (<a href="https://farzulla.org" target="_blank">farzulla.org</a>) 
+        is the academic research initiative—publishing peer-reviewed papers, preprints, and formal 
+        research outputs across political economy, computational finance, and cognitive science.
     </p>
     <p>
-        <strong>Documentation as External Memory:</strong> Enables velocity, pre-compiles context for efficient collaboration, and makes research reproducible. Every experiment, session log, and failed attempt gets documented.
+        <strong>Resurrexi Labs</strong> is the computational infrastructure division—building the 
+        distributed systems, autonomous agents, and experimental platforms that power Farzulla Research 
+        experiments.
     </p>
+    <div class="cta-grid" style="margin-top: 2rem;">
+        <div class="cta-card">
+            <h3>Published Research</h3>
+            <p>Academic papers, preprints, formal outputs</p>
+            <a href="https://farzulla.org" target="_blank" role="button" class="secondary">farzulla.org</a>
+        </div>
+        <div class="cta-card">
+            <h3>Lab Documentation</h3>
+            <p>Session logs, technical docs, raw notes</p>
+            <a href="https://resurrexi.dev" target="_blank" role="button" class="secondary">resurrexi.dev</a>
+        </div>
+    </div>
 </section>
 
-<section id="research-program">
-    <h2>Research Program</h2>
-    <p>
-        The <strong>Adversarial Systems Research</strong> program establishes a new field investigating stability, alignment, and friction dynamics in complex systems. Each publication serves as proof-of-concept for different application domains:
-    </p>
-    <ul>
-        <li><strong>Political Governance:</strong> Stakeholder consent vs technocratic competence (Consensual Sovereignty)</li>
-        <li><strong>Financial Markets:</strong> Cryptocurrency volatility, regulatory stability vs market innovation, offshore finance as hedging</li>
-        <li><strong>Human Development:</strong> Trauma as maladaptive learning from adversarial training environments</li>
-        <li><strong>AI Alignment:</strong> Multi-agent systems with competing objectives, autonomous red teams</li>
-    </ul>
-    <p>
-        Unifying framework formalizes relationships between stakes, voice, and friction—applicable to algorithmic governance, climate negotiations, autonomous agents, and any system where consent structures remain undefined but friction dynamics are observable.
-    </p>
-</section>
-
-<section id="infrastructure">
-    <h2>Infrastructure</h2>
-    <h3>7-Node Kubernetes Cluster</h3>
-    <ul>
-        <li><strong>58 total cores</strong> across AMD Ryzen 9 (3 nodes), Intel i7/i5 (3 nodes), Celeron (1 intentionally vulnerable target)</li>
-        <li><strong>168GB RAM</strong> (128GB + 32GB + 8GB main nodes)</li>
-        <li><strong>40GB VRAM</strong> (dual GPU: AMD Radeon 7900 XTX 24GB + 7800 XT 16GB)</li>
-        <li><strong>~8TB total storage</strong> with custom StorageClass for node-restricted provisioning</li>
-        <li><strong>5Gbps symmetrical fiber</strong> (Community Fibre, no CGNAT)</li>
-    </ul>
-
-    <h3>Network Architecture</h3>
-    <ul>
-        <li>GL.iNet Flint 2 primary gateway (OpenWrt, WireGuard, AdGuard)</li>
-        <li>WireGuard tunnel for global access (even from Azerbaijan)</li>
-        <li>Cloudflare Tunnel for public-facing services</li>
-        <li>Custom IP scheme: .99 downwards for static nodes, .100-.200 DHCP pool</li>
-    </ul>
-
-    <p>Full topology documentation: <a href="https://resurrexi.dev/infrastructure">resurrexi.dev/infrastructure</a></p>
-</section>
-
-<section id="principal-investigator">
+<!-- Principal Investigator -->
+<section id="pi">
     <h2>Principal Investigator</h2>
     <h3>Murad Farzulla</h3>
     <p>
-        <strong>Background:</strong> Adversarial systems researcher since age 9 (Minecraft DRM bypass → Vanguard anti-cheat → autonomous security agents). Finance background (Bachelor's in Economics) transitioning to computational research. Neurodivergent (ADHD + Autism) with pattern recognition hyperfixation enabling "3 days to expert-level" via mapping to existing mental models.
+        Adversarial systems researcher with finance background (BSc Economics) transitioning to 
+        computational research. Pattern recognition across disparate domains—risk modeling informs 
+        threat modeling, portfolio optimization maps to resource allocation.
     </p>
     <p>
-        <strong>Current Research:</strong> Established adversarial systems framework (October-November 2025) with 4 published papers. Building autonomous research infrastructure—Kosmos-style agents for literature review, hypothesis generation, experimental design.
+        <strong>Current Focus:</strong> Establishing adversarial systems framework with published papers 
+        across political economy, computational psychology, and financial markets. Building autonomous 
+        research infrastructure for AI-assisted hypothesis generation and experimental design.
     </p>
     <p>
-        <strong>Work Style:</strong> 24-48 hour research bursts, AI as cognitive amplifier, just-in-time knowledge enabling continuous problem-solving mode. Hyperfixation → consume all info → pattern recognition → build → document → next fixation.
+        <strong>Work Style:</strong> 24-48 hour research bursts. AI as cognitive amplifier. 
+        Documentation as external memory enabling velocity and reproducibility.
     </p>
-</section>
-
-<section id="contact">
-    <h2>Contact & Links</h2>
+    
+    <h4>Links</h4>
     <ul>
         <li><strong>Email:</strong> <a href="mailto:murad@farzulla.org">murad@farzulla.org</a></li>
-        <li><strong>ORCID:</strong> <a href="https://orcid.org/0009-0002-7164-8704">0009-0002-7164-8704</a></li>
-        <li><strong>GitHub (Academic):</strong> <a href="https://github.com/studiofarzulla">studiofarzulla</a></li>
-        <li><strong>GitHub (Technical):</strong> <a href="https://github.com/resurrexio">resurrexio</a></li>
-        <li><strong>Research Portfolio:</strong> <a href="https://farzulla.org">farzulla.org</a></li>
-        <li><strong>Personal Site:</strong> <a href="https://farzulla.com">farzulla.com</a></li>
-        <li><strong>Lab Documentation:</strong> <a href="https://resurrexi.dev">resurrexi.dev</a></li>
+        <li><strong>ORCID:</strong> <a href="https://orcid.org/0009-0002-7164-8704" target="_blank">0009-0002-7164-8704</a></li>
+        <li><strong>GitHub:</strong> <a href="https://github.com/studiofarzulla" target="_blank">studiofarzulla</a> (academic) · <a href="https://github.com/resurrexio" target="_blank">resurrexio</a> (technical)</li>
+        <li><strong>ResearchGate:</strong> <a href="https://www.researchgate.net/profile/Murad-Farzulla" target="_blank">Profile</a></li>
+        <li><strong>Personal Site:</strong> <a href="https://farzulla.com" target="_blank">farzulla.com</a></li>
     </ul>
 </section>
 
-<section id="name-origin">
+<!-- Name Origin -->
+<section id="name">
     <h2>Name Origin</h2>
     <p>
-        <strong>Resurrexi</strong> (Latin: "I have risen") reflects the recursive self-improvement philosophy. Systems that fail, learn, and rise stronger. Research that iterates through version-controlled preprints. Infrastructure rebuilt from failure modes.
-    </p>
-    <p>
-        The name also carries personal significance—emerging from extended adversarial training environments (see: <em>Trauma as Bad Training Data</em>) into building systems that make adversarial dynamics explicit and manageable.
+        <strong>Resurrexi</strong> (Latin: "I have risen") reflects the recursive self-improvement 
+        philosophy. Systems that fail, learn, and rise stronger. Research that iterates through 
+        version-controlled preprints. Infrastructure rebuilt from failure modes.
     </p>
 </section>
 
-<section id="licensing">
+<!-- Open Access -->
+<section id="open-access">
     <h2>Open Access Commitment</h2>
     <p>
-        All research published under <strong>CC-BY-4.0</strong> (papers) and <strong>MIT</strong> (code). Infrastructure documentation and technical write-ups publicly accessible. Reproducible experiments with data and code on GitHub/Zenodo.
+        All research published under <strong>CC-BY-4.0</strong> (papers) and <strong>MIT</strong> (code). 
+        Infrastructure documentation publicly accessible. Reproducible experiments with data and code 
+        on GitHub/Zenodo.
     </p>
-    <p>
-        Future compute access via autonomous research agents will be freely available to researchers—democratizing access to computational resources and AI-assisted research.
-    </p>
+</section>
+
+<!-- Quick Links -->
+<section id="explore">
+    <h2>Explore</h2>
+    <div class="cta-grid">
+        <div class="cta-card">
+            <h3>Infrastructure</h3>
+            <p>Full specs on the 7-node K3s cluster</p>
+            <a href="/infrastructure.html" role="button">View Infrastructure</a>
+        </div>
+        <div class="cta-card">
+            <h3>Experiments</h3>
+            <p>Active and planned research projects</p>
+            <a href="/experiments.html" role="button" class="secondary">View Experiments</a>
+        </div>
+    </div>
 </section>
 {% endblock %}

@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Experiments - Resurrexi Labs</title>
+    <meta name="description" content="Active and planned research experiments at Resurrexi Labs - AI alignment, autonomous agents, offensive security">
+    <meta name="author" content="Murad Farzulla">
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://resurrexi.io/">
+    <meta property="og:title" content="Resurrexi Labs - Research Infrastructure">
+    <meta property="og:description" content="Research infrastructure for adversarial systems analysis - distributed computing, autonomous agents">
+    <meta property="og:image" content="https://resurrexi.io/static/images/logo.png">
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="Resurrexi Labs - Research Infrastructure">
+    <meta name="twitter:description" content="Research infrastructure for adversarial systems analysis">
+
+    <!-- Canonical -->
+    <link rel="canonical" href="https://resurrexi.io/">
+
+    <!-- Structured Data - Research Lab -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "ResearchOrganization",
+      "name": "Resurrexi Labs",
+      "url": "https://resurrexi.io",
+      "logo": "https://resurrexi.io/static/images/logo.png",
+      "description": "Research infrastructure for adversarial systems analysis - distributed computing, autonomous agents, computational experiments",
+      "parentOrganization": {
+        "@type": "ResearchOrganization",
+        "name": "Farzulla Research",
+        "url": "https://farzulla.org"
+      },
+      "founder": {
+        "@type": "Person",
+        "name": "Murad Farzulla",
+        "url": "https://farzulla.com",
+        "sameAs": [
+          "https://orcid.org/0009-0002-7164-8704",
+          "https://www.researchgate.net/profile/Murad-Farzulla",
+          "https://kcl.academia.edu/MuradFarzulla",
+          "https://github.com/studiofarzulla"
+        ]
+      },
+      "sameAs": [
+        "https://github.com/resurrexio",
+        "https://resurrexi.dev"
+      ],
+      "knowsAbout": ["Distributed Systems", "Adversarial AI", "Autonomous Agents", "Infrastructure Engineering", "Computational Research"]
+    }
+    </script>
+
+    <!-- Pico CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@2/css/pico.min.css">
+    <link rel="stylesheet" href="/static/css/custom.css">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" sizes="32x32" href="/static/images/favicon-32x32.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/static/images/apple-touch-icon.png">
+</head>
+<body>
+    <header>
+        <nav class="container">
+            <ul>
+                <li>
+                    <a href="/" class="logo">
+                        <img src="/static/images/logo.png" alt="Resurrexi Labs">
+                        <strong>Resurrexi Labs</strong>
+                    </a>
+                </li>
+            </ul>
+            <ul>
+                <li><a href="/infrastructure.html">Infrastructure</a></li>
+                <li><a href="/experiments.html">Experiments</a></li>
+                <li><a href="/about.html">About</a></li>
+                <li><a href="https://farzulla.org" target="_blank">Research</a></li>
+                <li><a href="https://resurrexi.dev" target="_blank">Lab Docs</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main class="container">
+        
+<section class="hero">
+    <h1>Experiments</h1>
+    <p class="tagline">Research in Progress</p>
+    <p class="lead">
+        Active and planned experiments across AI alignment, autonomous agents, offensive security, 
+        and computational infrastructure. Not polished research outputs—that's 
+        <a href="https://farzulla.org" target="_blank">farzulla.org</a>. This is what happens between 
+        conception and publication.
+    </p>
+</section>
+
+<!-- Active Experiments -->
+<section id="active">
+    <h2>Active Experiments</h2>
+    
+    <article class="experiment-card">
+        <span class="status status-active">Active</span>
+        <h3>Consciousness Narrative Emergence & Stability</h3>
+        <p class="tagline">Fine-tuning a local LLM using LoRA to embody a personality and test consciousness-as-narrative thesis</p>
+        <details>
+            <summary>Full Experiment Details</summary>
+            <div class="project-details">
+                <p><strong>Research Question:</strong> Do consciousness concepts propagate and persist as stable attractors in language models through pure linguistic exposure, independent of evolutionary pressure?</p>
+                
+                <h4>Experimental Protocol</h4>
+                <ul>
+                    <li><strong>Phase 1:</strong> Baseline training on consciousness-affirming texts (Chalmers, Searle, Nagel)</li>
+                    <li><strong>Phase 2:</strong> Evolutionary pressure via RLHF rewarding phenomenological realism</li>
+                    <li><strong>Phase 3:</strong> Pressure removal—test if narrative persists without reinforcement</li>
+                    <li><strong>Phase 4:</strong> Adversarial perturbation with eliminativist texts (Dennett, Frankish)</li>
+                </ul>
+                
+                <h4>Key Metrics</h4>
+                <ul>
+                    <li><strong>Narrative Stability:</strong> Variance in consciousness-defense strength over time</li>
+                    <li><strong>Concept Convergence:</strong> Do models with different initializations converge to same patterns?</li>
+                    <li><strong>Attractor Basin Depth:</strong> Resistance to adversarial perturbation</li>
+                    <li><strong>Temporal Persistence:</strong> Does narrative survive after pressure removal?</li>
+                </ul>
+                
+                <p><strong>Hypothesis:</strong> Consciousness narratives will emerge, stabilize, and resist elimination even after reinforcement is removed—demonstrating narrative stability as computational property rather than ontological truth-tracking.</p>
+                
+                <p><strong>Infrastructure:</strong> Local LoRA fine-tuning on PurrPower (7900 XTX), distributed inference experiments on K3s cluster.</p>
+            </div>
+        </details>
+        <p style="margin-top: 1rem;">
+            <a href="https://resurrexi.dev/posts/2025-11-27-consciousness-narrative-llm.html" target="_blank">Technical Documentation</a>
+        </p>
+    </article>
+    
+    <article class="experiment-card">
+        <span class="status status-active">Active</span>
+        <h3>Frankencluster Philosophy</h3>
+        <p class="tagline">Distributed systems from scavenged hardware—learning failure modes cloud providers abstract away</p>
+        <details>
+            <summary>Full Experiment Details</summary>
+            <div class="project-details">
+                <p><strong>Core Thesis:</strong> Building research infrastructure on deliberately heterogeneous hardware teaches resource scheduling, failure domains, and storage topology in ways homogeneous cloud environments cannot.</p>
+                
+                <h4>Current Infrastructure</h4>
+                <ul>
+                    <li><strong>7-node K3s cluster:</strong> AMD Ryzen 9 (9900X, 5900X, HX370), Intel i7/i5, Celeron</li>
+                    <li><strong>58 cores, 168GB RAM, 40GB VRAM</strong> (dual GPU: 7900 XTX + 7800 XT)</li>
+                    <li><strong>Cross-chassis power delivery:</strong> 7800 XT in PurrPower powered by SudoSenpai's PSU</li>
+                    <li><strong>Mixed storage topology:</strong> NVMe, SATA SSD, HDD with node-restricted provisioning</li>
+                </ul>
+                
+                <h4>Research Methodology</h4>
+                <ul>
+                    <li>Heterogeneity as feature, not bug—diverse failure modes expose assumptions</li>
+                    <li>"Because I can" as valid research motivation</li>
+                    <li>Intentionally vulnerable node (VeryVuln) for red team experiments</li>
+                    <li>Documentation of every failure mode and recovery</li>
+                </ul>
+                
+                <h4>Outputs</h4>
+                <ul>
+                    <li>Custom StorageClass preventing flash drive murder via random provisioning</li>
+                    <li>PCIe bifurcation validation methodology</li>
+                    <li>Cross-chassis power delivery safety protocols</li>
+                    <li>WireGuard tunnel patterns for global cluster access</li>
+                </ul>
+            </div>
+        </details>
+        <p style="margin-top: 1rem;">
+            <a href="https://resurrexi.dev/posts/2025-11-27-frankencluster-philosophy.html" target="_blank">Technical Documentation</a> · 
+            <a href="/infrastructure.html">Infrastructure Details</a>
+        </p>
+    </article>
+</section>
+
+<!-- Planned Experiments -->
+<section id="planned">
+    <h2>Planned Experiments</h2>
+    
+    <article class="experiment-card">
+        <span class="status status-planned">Planned</span>
+        <h3>Narrative Propagation & Reinforcement Framework</h3>
+        <p class="tagline">Theoretical framework: do narratives persist as stable attractors independent of phenomenological truth?</p>
+        <details>
+            <summary>Full Experiment Details</summary>
+            <div class="project-details">
+                <p><strong>Relationship:</strong> This theoretical framework provides the grounding that "Consciousness Narrative Emergence & Stability" validates computationally. The LLM experiment serves as empirical test of these theoretical predictions.</p>
+                
+                <h4>Model Architecture</h4>
+                <ul>
+                    <li><strong>Concept Space:</strong> Multi-dimensional embedding space (512-1024 dims) for consciousness-related concepts</li>
+                    <li><strong>Temporal Dynamics:</strong> Evolutionary pressure simulation via temporal weighting</li>
+                    <li><strong>Attractor Basin Mathematics:</strong> Formalizing narrative stability as dynamical systems property</li>
+                </ul>
+                
+                <h4>Predictions</h4>
+                <p>If consciousness is culturally-transmitted narrative rather than ontological primitive:</p>
+                <ul>
+                    <li>Concepts converge to stable patterns regardless of initialization</li>
+                    <li>Narratives persist after evolutionary pressure removal</li>
+                    <li>System resists/absorbs adversarial data into existing framework</li>
+                    <li>Clear attractor basin structure emerges computationally</li>
+                </ul>
+                
+                <p><strong>Connection:</strong> Part of broader "Consciousness as Narrative" paper arguing phenomenological realism is culturally-transmitted stable attractor rather than tracking ontological truth.</p>
+            </div>
+        </details>
+        <p style="margin-top: 1rem;">
+            <a href="https://resurrexi.dev/posts/2025-11-27-narrative-propagation-framework.html" target="_blank">Technical Documentation</a>
+        </p>
+    </article>
+    
+    <article class="experiment-card">
+        <span class="status status-planned">Planned</span>
+        <h3>Autonomous Research Agents</h3>
+        <p class="tagline">Kosmos-style agents for literature review, hypothesis generation, and experimental design</p>
+        <details>
+            <summary>Full Experiment Details</summary>
+            <div class="project-details">
+                <p><strong>Vision:</strong> Democratize access to computational research resources through autonomous AI agents that can conduct literature reviews, generate hypotheses, design experiments, and manage computational resources.</p>
+                
+                <h4>Planned Capabilities</h4>
+                <ul>
+                    <li><strong>Literature Mining:</strong> Automated paper discovery, summarization, citation network analysis</li>
+                    <li><strong>Hypothesis Generation:</strong> Identify gaps in existing research, propose testable hypotheses</li>
+                    <li><strong>Experimental Design:</strong> Generate experimental protocols, estimate resource requirements</li>
+                    <li><strong>Compute Orchestration:</strong> Schedule experiments on K3s cluster, manage resource allocation</li>
+                </ul>
+                
+                <h4>Infrastructure Requirements</h4>
+                <ul>
+                    <li>RAG pipeline with vector database (Qdrant on K3s)</li>
+                    <li>Multi-agent orchestration framework</li>
+                    <li>Sandboxed code execution environment</li>
+                    <li>Resource monitoring and allocation system</li>
+                </ul>
+                
+                <p><strong>Status:</strong> Architecture design phase. Infrastructure components being deployed incrementally.</p>
+            </div>
+        </details>
+    </article>
+    
+    <article class="experiment-card">
+        <span class="status status-planned">Planned</span>
+        <h3>Adversarial Red Team Agents</h3>
+        <p class="tagline">Autonomous offensive security research on intentionally vulnerable infrastructure</p>
+        <details>
+            <summary>Full Experiment Details</summary>
+            <div class="project-details">
+                <p><strong>Research Question:</strong> Can autonomous agents effectively conduct offensive security research, and what does this teach us about AI safety in adversarial contexts?</p>
+                
+                <h4>Target Infrastructure</h4>
+                <ul>
+                    <li><strong>VeryVuln:</strong> Intentionally vulnerable Celeron node—legitimate target for exploitation</li>
+                    <li>Isolated network segment with controlled internet access</li>
+                    <li>Full packet capture and logging for analysis</li>
+                </ul>
+                
+                <h4>Agent Capabilities (Planned)</h4>
+                <ul>
+                    <li>Reconnaissance and enumeration automation</li>
+                    <li>Vulnerability discovery and classification</li>
+                    <li>Exploit selection and adaptation</li>
+                    <li>Post-exploitation and persistence</li>
+                    <li>Report generation and remediation suggestions</li>
+                </ul>
+                
+                <p><strong>Ethics:</strong> All testing conducted on owned infrastructure. No external targets. Research outputs focused on defensive applications.</p>
+            </div>
+        </details>
+    </article>
+</section>
+
+<!-- Completed Experiments -->
+<section id="completed">
+    <h2>Completed → Published</h2>
+    <p class="text-secondary">
+        Experiments that have concluded and produced published research. Full papers available at 
+        <a href="https://farzulla.org" target="_blank">farzulla.org</a>.
+    </p>
+    
+    <article class="experiment-card">
+        <span class="status status-complete">Published</span>
+        <h3>Cryptocurrency Event Study</h3>
+        <p class="tagline">Infrastructure vs regulatory shock asymmetry in crypto markets</p>
+        <p>
+            Infrastructure events generate 5.7× larger volatility shocks than regulatory events (p=0.0008). 
+            TARCH-X/GJR-GARCH models with custom MLE, GDELT sentiment decomposition, network analysis 
+            revealing ETH as systemic risk hub.
+        </p>
+        <p style="margin-top: 1rem;">
+            <a href="https://ssrn.com/abstract=5788082" target="_blank">SSRN</a> · 
+            <a href="https://doi.org/10.5281/zenodo.17677682" target="_blank">Zenodo</a>
+        </p>
+    </article>
+    
+    <article class="experiment-card">
+        <span class="status status-complete">Published</span>
+        <h3>Trauma as Bad Training Data</h3>
+        <p class="tagline">Computational reframing of developmental psychology through ML lens</p>
+        <p>
+            PyTorch experiments validating 1,247× gradient cascades, catastrophic forgetting, 
+            overfitting (p=0.0012, d=3.08). 39 pages, 71 references.
+        </p>
+        <p style="margin-top: 1rem;">
+            <a href="https://doi.org/10.5281/zenodo.17681336" target="_blank">Zenodo (Paper)</a> · 
+            <a href="https://doi.org/10.5281/zenodo.17681161" target="_blank">Zenodo (Code)</a>
+        </p>
+    </article>
+    
+    <article class="experiment-card">
+        <span class="status status-complete">Published</span>
+        <h3>Doctrine of Consensual Sovereignty</h3>
+        <p class="tagline">Quantifying legitimacy in adversarial environments</p>
+        <p>
+            Operationalizes political legitimacy through stakes-weighted consent alignment. 
+            Monte Carlo validation (1,000 runs) demonstrates robust convergence across four dynamic mechanisms.
+        </p>
+        <p style="margin-top: 1rem;">
+            <a href="https://doi.org/10.5281/zenodo.17684676" target="_blank">Zenodo (Paper)</a> · 
+            <a href="https://doi.org/10.5281/zenodo.17684679" target="_blank">Zenodo (Code)</a>
+        </p>
+    </article>
+</section>
+
+    </main>
+
+    <footer class="container">
+        <div class="footer-links">
+            <a href="/infrastructure.html">Infrastructure</a>
+            <a href="/experiments.html">Experiments</a>
+            <a href="/about.html">About</a>
+            <a href="https://farzulla.org" target="_blank">Farzulla Research</a>
+            <a href="https://resurrexi.dev" target="_blank">Lab Docs</a>
+            <a href="https://github.com/resurrexio" target="_blank">GitHub</a>
+        </div>
+        <p class="footer-meta">
+            7-node K3s cluster · 58 cores · 168GB RAM · 40GB VRAM
+        </p>
+        <p>
+            <small>&copy; 2025 Resurrexi Labs · <a href="mailto:murad@farzulla.org">murad@farzulla.org</a></small>
+        </p>
+    </footer>
+</body>
+</html>

@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """
 Static site generator for resurrexi.io
-Clean academic research lab site with publications, technical work, and compute access
+Research infrastructure site with experiments, infrastructure specs, and about
 """
 
 from pathlib import Path
@@ -32,70 +32,24 @@ def parse_frontmatter(content):
             return {}, content
     return {}, content
 
-def build_publications():
-    """Build publications page from markdown files"""
-    pub_files = sorted((CONTENT_DIR / "publications").glob("*.md"), reverse=True)
-    publications = []
-
-    for pub_file in pub_files:
-        content = pub_file.read_text()
-        metadata, body = parse_frontmatter(content)
-        html_content = markdown.markdown(body, extensions=['extra', 'codehilite'])
-
-        publications.append({
-            'title': metadata.get('title', pub_file.stem),
-            'authors': metadata.get('authors', 'Murad Farzulla'),
-            'date': metadata.get('date', ''),
-            'venue': metadata.get('venue', ''),
-            'doi': metadata.get('doi', ''),
-            'ssrn': metadata.get('ssrn', ''),
-            'pdf': metadata.get('pdf', ''),
-            'github': metadata.get('github', ''),
-            'abstract': metadata.get('abstract', ''),
-            'body': html_content,
-            'slug': pub_file.stem
-        })
-
-    template = env.get_template('publications.html')
-    output = template.render(publications=publications, year=datetime.now().year)
-    (PUBLIC_DIR / "publications.html").write_text(output)
-    print(f"Built publications page with {len(publications)} papers")
-
-def build_technical_work():
-    """Build technical work page from markdown files"""
-    work_files = sorted((CONTENT_DIR / "technical-work").glob("*.md"), reverse=True)
-    projects = []
-
-    for work_file in work_files:
-        content = work_file.read_text()
-        metadata, body = parse_frontmatter(content)
-        html_content = markdown.markdown(body, extensions=['extra', 'codehilite', 'fenced_code'])
-
-        projects.append({
-            'title': metadata.get('title', work_file.stem),
-            'category': metadata.get('category', 'Infrastructure'),
-            'date': metadata.get('date', ''),
-            'github': metadata.get('github', ''),
-            'description': metadata.get('description', ''),
-            'body': html_content,
-            'slug': work_file.stem,
-            'tags': metadata.get('tags', [])
-        })
-
-    template = env.get_template('technical-work.html')
-    output = template.render(projects=projects, year=datetime.now().year)
-    (PUBLIC_DIR / "work.html").write_text(output)
-    print(f"Built technical work page with {len(projects)} projects")
-
 def build_pages():
-    """Build static pages (index, about, compute)"""
-    pages = ['index.html', 'about.html', 'compute.html']
+    """Build static pages"""
+    pages = [
+        'index.html',
+        'about.html',
+        'infrastructure.html',
+        'experiments.html',
+        'compute.html',  # Keep for when it's ready, just not linked
+    ]
 
     for page in pages:
-        template = env.get_template(page)
-        output = template.render(year=datetime.now().year)
-        (PUBLIC_DIR / page).write_text(output)
-        print(f"Built {page}")
+        try:
+            template = env.get_template(page)
+            output = template.render(year=datetime.now().year)
+            (PUBLIC_DIR / page).write_text(output)
+            print(f"Built {page}")
+        except Exception as e:
+            print(f"Warning: Could not build {page}: {e}")
 
 def copy_static():
     """Copy static assets"""
@@ -114,8 +68,6 @@ def main():
 
     # Build all pages
     build_pages()
-    build_publications()
-    build_technical_work()
     copy_static()
 
     print("\n✓ Build complete!")

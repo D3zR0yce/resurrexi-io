@@ -1,0 +1,190 @@
+{% extends "base.html" %}
+
+{% block title %}Infrastructure - Resurrexi Labs{% endblock %}
+{% block description %}7-node K3s cluster specs: 58 cores, 168GB RAM, 40GB VRAM. Deliberately heterogeneous research compute.{% endblock %}
+
+{% block content %}
+<section class="hero">
+    <h1>Infrastructure</h1>
+    <p class="tagline">Deliberately Heterogeneous Research Compute</p>
+    <p class="lead">
+        The frankencluster: distributed systems built from scavenged hardware. 
+        Mixed CPUs, cross-chassis power delivery, intentionally vulnerable nodes. 
+        Because understanding failure modes requires systems that occasionally fail.
+    </p>
+</section>
+
+<!-- Philosophy -->
+<section id="philosophy">
+    <h2>Frankencluster Philosophy</h2>
+    <blockquote>
+        "Production-grade research infrastructure on deliberately heterogeneous hardware—because understanding failure modes requires systems that occasionally fail."
+    </blockquote>
+    
+    <p>
+        Building distributed systems from scavenged hardware teaches resource heterogeneity, failure domains, 
+        and storage topology in ways cloud providers abstract away. This isn't a compromise—it's a research methodology.
+    </p>
+    
+    <h3>Core Principles</h3>
+    <ul>
+        <li><strong>Heterogeneity as Feature:</strong> Mixed AMD Ryzen 9 (9900X, 5900X, HX370), Intel i7/i5, and potato-tier Celeron processors create real-world adversarial conditions. Scheduling across disparate compute exposes assumptions homogeneous clouds hide.</li>
+        <li><strong>Failure as Learning:</strong> Systems that occasionally fail teach failure modes. Cloud providers abstract away the interesting parts—storage topology, network partitions, resource contention under heterogeneous load.</li>
+        <li><strong>"Because I Can" as Valid Research:</strong> Cross-chassis GPU power delivery started as "can we?" and became "what does this teach us about power delivery, PCIe topology, and system integration?"</li>
+        <li><strong>Intentional Vulnerability:</strong> VeryVuln exists specifically to be compromised—a legitimate target for red team experiments rather than borrowed production systems.</li>
+    </ul>
+</section>
+
+<!-- Cluster Overview -->
+<section id="cluster">
+    <h2>Cluster Specifications</h2>
+    
+    <div class="specs-grid">
+        <div class="spec-item">
+            <div class="value">7</div>
+            <div class="label">Nodes</div>
+        </div>
+        <div class="spec-item">
+            <div class="value">58</div>
+            <div class="label">CPU Cores</div>
+        </div>
+        <div class="spec-item">
+            <div class="value">168GB</div>
+            <div class="label">Total RAM</div>
+        </div>
+        <div class="spec-item">
+            <div class="value">40GB</div>
+            <div class="label">VRAM</div>
+        </div>
+        <div class="spec-item">
+            <div class="value">~8TB</div>
+            <div class="label">Storage</div>
+        </div>
+        <div class="spec-item">
+            <div class="value">5Gbps</div>
+            <div class="label">Fiber</div>
+        </div>
+    </div>
+</section>
+
+<!-- Node Details -->
+<section id="nodes">
+    <h2>Node Inventory</h2>
+    
+    <article class="experiment-card">
+        <span class="status status-active">Primary Workstation</span>
+        <h3>PurrPower</h3>
+        <p class="tagline">Beast mode compute + dual GPU inference</p>
+        <ul>
+            <li><strong>CPU:</strong> AMD Ryzen 9 9900X (12C/24T)</li>
+            <li><strong>RAM:</strong> 128GB DDR5</li>
+            <li><strong>GPU:</strong> AMD Radeon 7900 XTX (24GB) + 7800 XT (16GB)</li>
+            <li><strong>Storage:</strong> 2TB NVMe</li>
+            <li><strong>Role:</strong> Local development, LM Studio inference, heavy compute</li>
+        </ul>
+        <details>
+            <summary>Notable Configuration</summary>
+            <p>
+                Dual GPU with cross-chassis power delivery—7800 XT powered by SudoSenpai's PSU via 
+                8-pin extension cable. 185W drawn from external PSU during inference. PCIe x8/x8 
+                bifurcation validated via upstream port inspection.
+            </p>
+        </details>
+    </article>
+    
+    <article class="experiment-card">
+        <span class="status status-active">Control Plane</span>
+        <h3>SudoSenpai</h3>
+        <p class="tagline">K3s control plane + storage server</p>
+        <ul>
+            <li><strong>CPU:</strong> AMD Ryzen 9 5900X (12C/24T)</li>
+            <li><strong>RAM:</strong> 32GB DDR4</li>
+            <li><strong>Storage:</strong> 5.5TB (mixed NVMe, SATA SSD, HDD)</li>
+            <li><strong>Role:</strong> K3s control plane, persistent storage, Cloudflare tunnel</li>
+        </ul>
+    </article>
+    
+    <article class="experiment-card">
+        <span class="status status-active">Mobile Lab</span>
+        <h3>KawaiiKali</h3>
+        <p class="tagline">ASUS Zenbook S16 with XDNA 2 NPU</p>
+        <ul>
+            <li><strong>CPU:</strong> AMD Ryzen AI 9 HX 370 (12C/24T)</li>
+            <li><strong>RAM:</strong> 32GB LPDDR5X</li>
+            <li><strong>NPU:</strong> XDNA 2 (50 TOPS)</li>
+            <li><strong>Role:</strong> Mobile compute, travel node, NPU experiments</li>
+        </ul>
+    </article>
+    
+    <article class="experiment-card">
+        <span class="status status-active">Worker Node</span>
+        <h3>CronCrunch</h3>
+        <p class="tagline">GTX 1080 worker</p>
+        <ul>
+            <li><strong>CPU:</strong> AMD Ryzen 7 2700X</li>
+            <li><strong>RAM:</strong> 16GB DDR4</li>
+            <li><strong>GPU:</strong> NVIDIA GTX 1080 (8GB)</li>
+            <li><strong>Role:</strong> K3s worker, CUDA compute, older model inference</li>
+        </ul>
+    </article>
+    
+    <article class="experiment-card">
+        <span class="status status-planned">Worker Nodes</span>
+        <h3>WolfWhoami, NekoNetcat, BittyBash</h3>
+        <p class="tagline">Additional K3s workers</p>
+        <ul>
+            <li><strong>Mixed CPUs:</strong> Intel i7/i5 vintage</li>
+            <li><strong>Role:</strong> Distributed workload, redundancy, capacity</li>
+        </ul>
+    </article>
+    
+    <article class="experiment-card">
+        <span class="status" style="background-color: rgba(239, 68, 68, 0.1); color: #ef4444;">Vulnerable</span>
+        <h3>VeryVuln</h3>
+        <p class="tagline">Intentionally vulnerable target</p>
+        <ul>
+            <li><strong>CPU:</strong> Intel Celeron (potato-tier)</li>
+            <li><strong>Role:</strong> Red team experiments, exploit development, honeypot research</li>
+        </ul>
+        <p class="text-muted" style="margin-top: 0.5rem;">
+            Exists specifically to be compromised—legitimate target for offensive security research.
+        </p>
+    </article>
+</section>
+
+<!-- Network -->
+<section id="network">
+    <h2>Network Architecture</h2>
+    <ul>
+        <li><strong>Gateway:</strong> GL.iNet Flint 2 (OpenWrt, WireGuard, AdGuard)</li>
+        <li><strong>Internet:</strong> 5Gbps symmetrical fiber (Community Fibre, no CGNAT)</li>
+        <li><strong>VPN:</strong> WireGuard tunnel for global access (tested from Azerbaijan)</li>
+        <li><strong>Public Access:</strong> Cloudflare Tunnel for public-facing services</li>
+        <li><strong>IP Scheme:</strong> .99 downwards for static nodes, .100-.200 DHCP pool</li>
+    </ul>
+</section>
+
+<!-- Notable Achievements -->
+<section id="achievements">
+    <h2>Notable Achievements</h2>
+    <ul>
+        <li>Dual GPU inference (7900 XTX + 7800 XT) with cross-chassis power delivery—185W drawn from external PSU</li>
+        <li>PCIe x8/x8 bifurcation validated via upstream port inspection (not x16/x16 as lspci initially suggested)</li>
+        <li>Custom StorageClass with node affinity to prevent flash drive murder via random provisioning</li>
+        <li>WireGuard tunnel enabling cluster access from Azerbaijan during travel</li>
+        <li>Cloudflare Tunnel serving resurrexi.dev and resurrexi.io from SudoSenpai</li>
+    </ul>
+</section>
+
+<!-- Documentation -->
+<section id="docs">
+    <h2>Documentation</h2>
+    <p>
+        Full topology documentation, session logs, troubleshooting workflows, and implementation decisions 
+        are maintained at <a href="https://resurrexi.dev" target="_blank">resurrexi.dev</a>.
+    </p>
+    <p>
+        <a href="https://resurrexi.dev" target="_blank" role="button">Lab Documentation →</a>
+    </p>
+</section>
+{% endblock %}
