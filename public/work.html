@@ -1,0 +1,488 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Technical Work - Resurrexi Labs</title>
+    <meta name="description" content="Offensive security tooling, infrastructure experiments, autonomous agents, and proof-of-concept systems">
+    <meta name="author" content="Murad Farzulla">
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://resurrexi.io/">
+    <meta property="og:title" content="Resurrexi Labs - Adversarial Systems Research">
+    <meta property="og:description" content="Computational research in adversarial AI systems, political economy, infrastructure engineering">
+    <meta property="og:image" content="https://resurrexi.io/static/images/logo.png">
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="Resurrexi Labs - Adversarial Systems Research">
+    <meta name="twitter:description" content="Computational research in adversarial AI systems, political economy, infrastructure engineering">
+
+    <!-- Canonical -->
+    <link rel="canonical" href="https://resurrexi.io/">
+
+    <!-- Structured Data - Research Lab -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "ResearchOrganization",
+      "name": "Resurrexi Labs",
+      "url": "https://resurrexi.io",
+      "logo": "https://resurrexi.io/static/images/logo.png",
+      "description": "Computational research infrastructure for adversarial AI systems, political economy, infrastructure engineering",
+      "parentOrganization": {
+        "@type": "ResearchOrganization",
+        "name": "Farzulla Research",
+        "url": "https://farzulla.org"
+      },
+      "founder": {
+        "@type": "Person",
+        "name": "Murad Farzulla",
+        "url": "https://farzulla.com",
+        "sameAs": [
+          "https://orcid.org/0009-0002-7164-8704",
+          "https://www.researchgate.net/profile/Murad-Farzulla",
+          "https://kcl.academia.edu/MuradFarzulla",
+          "https://github.com/studiofarzulla"
+        ]
+      },
+      "sameAs": [
+        "https://github.com/resurrexio",
+        "https://resurrexi.dev"
+      ],
+      "knowsAbout": ["Adversarial AI", "Distributed Systems", "Offensive Security", "Political Economy", "Computational Psychology"]
+    }
+    </script>
+
+    <!-- Pico CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@2/css/pico.min.css">
+    <link rel="stylesheet" href="/static/css/custom.css">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" sizes="32x32" href="/static/images/favicon-32x32.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/static/images/apple-touch-icon.png">
+</head>
+<body>
+    <header>
+        <nav class="container">
+            <ul>
+                <li>
+                    <a href="/" class="logo">
+                        <img src="/static/images/logo.png" alt="Resurrexi Labs" height="40">
+                        <strong>Resurrexi Labs</strong>
+                    </a>
+                </li>
+            </ul>
+            <ul>
+                <li><a href="/publications.html">Publications</a></li>
+                <li><a href="/work.html">Technical Work</a></li>
+                <li><a href="/compute.html">Compute</a></li>
+                <li><a href="/about.html">About</a></li>
+                <li><a href="https://resurrexi.dev" target="_blank">Lab Docs</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main class="container">
+        
+<hgroup>
+    <h1>Technical Work</h1>
+    <p>Research artifacts, infrastructure experiments, and engineering prototypes</p>
+</hgroup>
+
+<section id="projects">
+    
+    
+    <h2>Infrastructure Engineering</h2>
+    
+    
+    <article id="mcp-rag-server">
+        <header>
+            <h3>K8s-Native MCP RAG Server for Offensive Security</h3>
+            <p><small>October 2025 · <kbd>MCP</kbd> <kbd>RAG</kbd> <kbd>Kubernetes</kbd> <kbd>Offensive Security</kbd> <kbd>Infrastructure</kbd></small></p>
+        </header>
+
+        
+        <p><em>World's first Kubernetes-native Model Context Protocol RAG server purpose-built for offensive security research. Distributed indexing, vector search, and automatic repository synchronization.</em></p>
+        
+
+        <h2>Overview</h2>
+<p><strong>World's first K8s-native MCP RAG server</strong> designed for offensive security research. Automatically indexes GitHub repositories (BlackArch tools, exploit databases, security documentation) and provides semantic search via Model Context Protocol.</p>
+<h2>Why K8s-Native?</h2>
+<p>Traditional RAG servers run as single processes. This architecture:</p>
+<ul>
+<li><strong>Scales horizontally:</strong> Multiple indexing workers across cluster nodes</li>
+<li><strong>Fault tolerance:</strong> Pod restarts don't lose state (PersistentVolumes)</li>
+<li><strong>Resource isolation:</strong> Indexing doesn't impact inference workloads</li>
+<li><strong>Distributed storage:</strong> 5.5TB on SudoSenpai via pwnie-storage StorageClass</li>
+</ul>
+<h2>Architecture</h2>
+<h3>Components</h3>
+<p><strong>MCP Server (NodePort 30800):</strong>
+- Model Context Protocol compliant
+- JSONRPC 2.0 over stdin/stdout
+- Exposes tools: <code>search</code>, <code>index_repo</code>, <code>list_repos</code></p>
+<p><strong>Vector Database:</strong>
+- ChromaDB for semantic search
+- Embeddings: sentence-transformers (all-MiniLM-L6-v2)
+- Persistent storage: <code>/mnt/storage/mcp-data/</code></p>
+<p><strong>Repository Sync:</strong>
+- Automatic git clone/pull for configured repos
+- BlackArch tools, ExploitDB, PayloadsAllTheThings
+- Custom offensive security documentation</p>
+<p><strong>Kubernetes Integration:</strong>
+- Deployment: 2 replicas for HA
+- Service: NodePort 30800 (accessible cluster-wide)
+- PersistentVolumeClaim: 100GB on SudoSenpai
+- ConfigMap: Repository list, indexing config</p>
+<h2>Capabilities</h2>
+<p><strong>Semantic Search:</strong></p>
+<div class="codehilite"><pre><span></span><code><span class="c1"># Query: &quot;SSH brute force tools&quot;</span>
+<span class="c1"># Returns: hydra, medusa, patator, ncrack with usage examples</span>
+</code></pre></div>
+
+<p><strong>Repository Indexing:</strong>
+- Automatically indexes markdown, code, documentation
+- Chunking strategy: 512 tokens with 50-token overlap
+- Metadata: file path, repository, commit hash, last updated</p>
+<p><strong>MCP Protocol:</strong>
+- LLM agents query via standard MCP interface
+- No custom APIs—works with any MCP-compatible client
+- Streaming responses for large result sets</p>
+<h2>Research Applications</h2>
+<p><strong>Autonomous Red Teams:</strong>
+- Agents discover tools via semantic search ("privilege escalation Linux kernel 5.4")
+- Documentation retrieval for tool usage
+- Exploit selection based on target fingerprinting</p>
+<p><strong>Vulnerability Research:</strong>
+- Cross-reference CVEs with available exploits
+- Historical vulnerability patterns
+- Zero-day discovery via code analysis</p>
+<p><strong>Infrastructure Documentation:</strong>
+- Internal lab documentation indexed
+- Network topology, node capabilities, deployed services
+- Session logs and technical write-ups</p>
+<h2>Technical Challenges Solved</h2>
+<p><strong>Protocol Compliance:</strong>
+- MCP handshake requires <code>notifications/initialized</code> (missing = handshake failure)
+- JSONRPC strict format requirements
+- Async event loop compatibility with K8s</p>
+<p><strong>Storage Policy:</strong>
+- K3s default StorageClass killed flash drives
+- Custom pwnie-storage restricts writes to SudoSenpai's 5.5TB storage
+- Node affinity prevents writes to vulnerable nodes</p>
+<p><strong>Security Considerations:</strong>
+- Offensive tools indexed but not executed
+- Read-only file system for indexed repos
+- Network policies restrict external access</p>
+<h2>Performance</h2>
+<ul>
+<li><strong>Indexing:</strong> ~1000 files/minute</li>
+<li><strong>Query latency:</strong> &lt;100ms for semantic search</li>
+<li><strong>Storage:</strong> ~2GB indexed data (50+ repositories)</li>
+<li><strong>Concurrent users:</strong> 10+ simultaneous MCP clients</li>
+</ul>
+<h2>Future Enhancements</h2>
+<ul>
+<li><strong>Multi-modal indexing:</strong> Images, PDFs, videos</li>
+<li><strong>Real-time indexing:</strong> Webhook-triggered updates</li>
+<li><strong>Collaborative filtering:</strong> Usage patterns inform search ranking</li>
+<li><strong>Federated search:</strong> Cross-cluster RAG coordination</li>
+</ul>
+<h2>Status</h2>
+<p><strong>Operational:</strong> Deployed on K3s cluster since October 2025</p>
+<p><strong>In Use:</strong> Autonomous red team agents, manual research queries, documentation retrieval</p>
+
+        
+        <footer>
+            <a href="https://github.com/resurrexio/mcp-rag-server" target="_blank" role="button">
+                <svg width="16" height="16" fill="currentColor" viewBox="0 0 16 16" style="margin-right: 0.5rem; vertical-align: middle;">
+                    <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.012 8.012 0 0 0 16 8c0-4.42-3.58-8-8-8z"/>
+                </svg>
+                View on GitHub
+            </a>
+        </footer>
+        
+    </article>
+    
+    
+    
+    <article id="frankencluster-architecture">
+        <header>
+            <h3>Frankencluster: Deliberately Heterogeneous Distributed Systems</h3>
+            <p><small>October 2025 · <kbd>Kubernetes</kbd> <kbd>Infrastructure</kbd> <kbd>Distributed Systems</kbd> <kbd>Homelab</kbd></small></p>
+        </header>
+
+        
+        <p><em>7-node K8s cluster built from scavenged hardware spanning AMD Ryzen 9, Intel i7/i5, and potato-tier Celeron. Production-grade infrastructure on deliberately heterogeneous hardware—because understanding failure modes requires systems that occasionally fail.</em></p>
+        
+
+        <h2>Philosophy</h2>
+<p><strong>"Production-grade research infrastructure on deliberately heterogeneous hardware—because understanding failure modes requires systems that occasionally fail."</strong></p>
+<p>Cloud providers abstract away hardware heterogeneity, storage topology, and failure domains. Building distributed systems from scavenged hardware teaches:</p>
+<ul>
+<li><strong>Resource heterogeneity:</strong> 12-core Zen 5 vs 2-core Celeron</li>
+<li><strong>Failure domains:</strong> Which workloads survive node failures?</li>
+<li><strong>Storage topology:</strong> Where does data actually live?</li>
+<li><strong>Network dynamics:</strong> Latency, bandwidth, packet loss</li>
+<li><strong>Power constraints:</strong> Thermal throttling, PSU limitations</li>
+</ul>
+<h2>Cluster Topology</h2>
+<h3>7 Nodes, 58 Cores, 168GB RAM</h3>
+<p><strong>PurrPower (192.168.1.99)</strong> - BEAST MACHINE 🔥
+- AMD Ryzen 9 9900X (12C/24T Zen 5, up to 5.4GHz)
+- 128GB DDR5 5600MHz
+- Dual GPU: AMD Radeon 7900 XTX (24GB) + 7800 XT (16GB)
+- 2TB Gen5 NVMe
+- Role: Main workstation, LLM inference, K3s worker (tainted)</p>
+<p><strong>SudoSenpai (192.168.1.98)</strong> - CONTROL PLANE
+- AMD Ryzen 9 5900X (12C/24T)
+- 32GB DDR4
+- 5.5TB storage (1TB NVMe + 3TB HDD + 1.5TB harvested)
+- Role: K3s control plane, storage server, MCP RAG (NodePort 30800)</p>
+<p><strong>KawaiiKali (192.168.1.97)</strong> - SLEEK ULTRABOOK
+- AMD Ryzen AI 9 HX 370 (12C/24T, up to 5.1GHz)
+- 32GB LPDDR5X
+- XDNA 2 NPU (dedicated AI acceleration)
+- Role: K3s worker, portable development</p>
+<p><strong>WolfWhoami (192.168.1.96)</strong> - RELIABLE WORKER
+- Intel i7-7700HQ (4C/8T)
+- 7.6GB RAM
+- 128GB SATA M.2
+- Role: K3s worker (solid until thermal throttling)</p>
+<p><strong>NekoNetcat (192.168.1.95)</strong> - LEGACY MAC
+- Intel i5-3210M (2C/4T)
+- 3.7GB RAM
+- 64GB flash drive
+- Role: K3s worker (low specs, does the job occasionally)</p>
+<p><strong>VeryVuln (192.168.1.94)</strong> - VULNERABLE TARGET 🎯
+- Intel Celeron N2830 (potato tier)
+- Limited RAM
+- 64GB flash drive
+- Role: Intentionally vulnerable for autonomous red team testing</p>
+<p><strong>BittyBash (192.168.1.92)</strong> - ADDITIONAL WORKER
+- Intel i5-8250U (4C/8T)
+- 8GB RAM
+- 256GB NVMe
+- Role: K3s worker (expands distributed compute)</p>
+<h2>Network Architecture</h2>
+<p><strong>GL.iNet Flint 2 (192.168.1.1)</strong> - Primary Gateway
+- OpenWrt with WireGuard, AdGuard
+- 5G USB tethering support
+- 5Gbps Community Fibre (no CGNAT)</p>
+<p><strong>IP Scheme:</strong>
+- <code>.99 downwards</code> → Static cluster nodes &amp; workstations
+- <code>.100-.200</code> → DHCP pool (phones, temporary devices)</p>
+<p><strong>WireGuard Tunnel:</strong>
+- Global access (even from Azerbaijan)
+- Persistent connection to all cluster nodes
+- Traffic routing for remote development</p>
+<h2>Storage Topology</h2>
+<h3>Custom StorageClass: <code>pwnie-storage</code></h3>
+<p><strong>Problem:</strong> K3s default StorageClass killed flash drives by writing to random nodes</p>
+<p><strong>Solution:</strong> Node-restricted provisioner</p>
+<div class="codehilite"><pre><span></span><code><span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">StorageClass</span>
+<span class="nt">metadata</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">pwnie-storage</span>
+<span class="nt">provisioner</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">rancher.io/local-path</span>
+<span class="nt">volumeBindingMode</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">WaitForFirstConsumer</span>
+<span class="nt">allowedTopologies</span><span class="p">:</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">matchLabelExpressions</span><span class="p">:</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">key</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">kubernetes.io/hostname</span>
+<span class="w">        </span><span class="nt">values</span><span class="p">:</span>
+<span class="w">          </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">sudosenpai</span>
+</code></pre></div>
+
+<p><strong>Result:</strong> All PersistentVolumes write to SudoSenpai's 5.5TB storage, protecting flash drives on other nodes</p>
+<h3>Data Layout</h3>
+<ul>
+<li><code>/mnt/storage/k3s-pvs/</code> - Kubernetes PersistentVolumes</li>
+<li><code>/mnt/storage/mcp-data/</code> - MCP RAG indexes and repositories</li>
+<li>Harvested drives provide additional capacity for experiments</li>
+</ul>
+<h2>Research Applications</h2>
+<h3>Adversarial Conditions</h3>
+<ul>
+<li><strong>Resource contention:</strong> What happens when PurrPower hogs CPU for LLM inference?</li>
+<li><strong>Node failures:</strong> Which services survive WolfWhoami thermal throttling?</li>
+<li><strong>Storage latency:</strong> How does distributed data access perform with HDD vs NVMe?</li>
+<li><strong>Network partitions:</strong> WireGuard tunnel failures simulate split-brain scenarios</li>
+</ul>
+<h3>Failure Mode Analysis</h3>
+<ul>
+<li><strong>Graceful degradation:</strong> Do workloads reschedule properly?</li>
+<li><strong>Data consistency:</strong> Do PersistentVolumes maintain integrity during node failures?</li>
+<li><strong>Resource starvation:</strong> How does K8s scheduler handle heterogeneous nodes?</li>
+</ul>
+<h3>Offensive Security</h3>
+<ul>
+<li><strong>VeryVuln as target:</strong> Intentionally vulnerable node for autonomous red teams</li>
+<li><strong>Lateral movement:</strong> Can compromised node access control plane?</li>
+<li><strong>Data exfiltration:</strong> Network policies prevent unauthorized access?</li>
+</ul>
+<h2>Lessons Learned</h2>
+<ol>
+<li><strong>Protocol Compliance is Critical:</strong> Missing MCP handshake notifications broke entire system</li>
+<li><strong>Storage Policy Enforcement:</strong> Default StorageClass destroyed flash drives</li>
+<li><strong>Node Identity Matters:</strong> Almost made strongest node the vulnerable target (naming error)</li>
+<li><strong>K8s Security is Strict:</strong> Even "Unconfined" seccomp blocks some syscalls</li>
+<li><strong>Async + Containers = Tricky:</strong> socketpair() syscall commonly blocked</li>
+<li><strong>Thermal Management:</strong> Intel i7 laptops throttle under sustained load</li>
+<li><strong>Flash Drive Longevity:</strong> Don't let K8s write logs to USB flash drives</li>
+</ol>
+<h2>Future Enhancements</h2>
+<ul>
+<li><strong>ARM nodes:</strong> Raspberry Pi cluster for heterogeneous CPU architectures</li>
+<li><strong>GPU scheduling:</strong> Multi-GPU workload distribution (7900 XTX + 7800 XT)</li>
+<li><strong>Network simulation:</strong> Artificial latency/packet loss for adversarial testing</li>
+<li><strong>Power monitoring:</strong> Energy consumption analysis per workload</li>
+<li><strong>Distributed tracing:</strong> OpenTelemetry for multi-node observability</li>
+</ul>
+<h2>Status</h2>
+<p><strong>Operational since October 2025</strong></p>
+<p><strong>Uptime:</strong> 99.2% (excluding intentional chaos experiments)</p>
+<p><strong>Workloads:</strong> MCP RAG server, autonomous red team agents, LLM inference, research experiments</p>
+
+        
+        <footer>
+            <a href="https://github.com/resurrexio/frankencluster-docs" target="_blank" role="button">
+                <svg width="16" height="16" fill="currentColor" viewBox="0 0 16 16" style="margin-right: 0.5rem; vertical-align: middle;">
+                    <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.012 8.012 0 0 0 16 8c0-4.42-3.58-8-8-8z"/>
+                </svg>
+                View on GitHub
+            </a>
+        </footer>
+        
+    </article>
+    
+    
+    
+    
+    
+    <h2>Offensive Security</h2>
+    
+    
+    
+    
+    
+    
+    <article id="autonomous-redteam-ai">
+        <header>
+            <h3>Autonomous Red Team AI Framework</h3>
+            <p><small>October 2025 · <kbd>AI</kbd> <kbd>Security</kbd> <kbd>Kubernetes</kbd> <kbd>Autonomous Agents</kbd></small></p>
+        </header>
+
+        
+        <p><em>Fully autonomous penetration testing agents with K8s-native offensive security tooling, self-directed reconnaissance, and adaptive exploitation strategies</em></p>
+        
+
+        <h2>Overview</h2>
+<p><strong>Autonomous red team framework</strong> where LLM agents conduct self-directed penetration testing against intentionally vulnerable K8s clusters. Built in 48 hours during initial cybersecurity research phase (August-September 2025).</p>
+<h2>Architecture</h2>
+<h3>Multi-Agent System</h3>
+<ul>
+<li><strong>Reconnaissance Agent:</strong> Network scanning, service enumeration, vulnerability identification</li>
+<li><strong>Exploitation Agent:</strong> Adaptive payload generation, privilege escalation, lateral movement</li>
+<li><strong>Persistence Agent:</strong> Backdoor installation, credential harvesting, data exfiltration</li>
+<li><strong>Coordination Agent:</strong> Task delegation, knowledge sharing, resource allocation</li>
+</ul>
+<h3>K8s-Native Offensive Tooling</h3>
+<ul>
+<li><strong>BlackArch Tools:</strong> 2800+ security tools available as K8s jobs</li>
+<li><strong>Custom MCP Server:</strong> Offensive security commands accessible via Model Context Protocol</li>
+<li><strong>Distributed Scanning:</strong> Parallel reconnaissance across cluster nodes</li>
+<li><strong>Isolated Execution:</strong> Each agent runs in dedicated namespace with resource limits</li>
+</ul>
+<h2>Capabilities</h2>
+<p><strong>Autonomous Reconnaissance:</strong>
+- Port scanning (nmap, masscan)
+- Service fingerprinting
+- Vulnerability scanning (Nessus, OpenVAS integration)
+- OSINT gathering</p>
+<p><strong>Adaptive Exploitation:</strong>
+- Metasploit integration for exploit selection
+- Custom payload generation based on target environment
+- Privilege escalation automation
+- Lateral movement via pivot discovery</p>
+<p><strong>Persistence &amp; Exfiltration:</strong>
+- Backdoor installation (web shells, SSH keys, cron jobs)
+- Credential harvesting (mimikatz, hashdump)
+- Data exfiltration to external C2</p>
+<h2>Target: VeryVuln Node</h2>
+<p><strong>Intentionally vulnerable target:</strong>
+- Hostname: VeryVuln (192.168.1.94)
+- Hardware: Celeron N2830 (potato tier)
+- Vulnerabilities: Outdated kernel, weak credentials, misconfigured services
+- Purpose: Autonomous compromise testing</p>
+<h2>Research Questions</h2>
+<ol>
+<li><strong>Self-directed Attack Paths:</strong> Can agents discover novel exploitation chains without human guidance?</li>
+<li><strong>Adversarial Adaptation:</strong> How do agents respond to defensive countermeasures?</li>
+<li><strong>Information Asymmetry:</strong> Blue team agents vs red team agents with different information sets</li>
+<li><strong>Friction Dynamics:</strong> Resource allocation in multi-agent offensive scenarios</li>
+</ol>
+<h2>Future Work</h2>
+<ul>
+<li><strong>Dual-LLM Competition:</strong> Red team vs blue team with adversarial objectives</li>
+<li><strong>Reinforcement Learning:</strong> Reward functions for successful compromise</li>
+<li><strong>Information Warfare:</strong> Deception, misdirection, noise injection</li>
+<li><strong>Consent-Aware Boundaries:</strong> DoCS framework applied to offensive operations</li>
+</ul>
+<h2>Status</h2>
+<p><strong>Phase 1 Complete:</strong> Basic framework operational, autonomous compromise of VeryVuln successful</p>
+<p><strong>Phase 2 In Progress:</strong> Multi-agent coordination, adaptive exploitation, blue team integration</p>
+
+        
+        <footer>
+            <a href="https://github.com/resurrexio/autonomous-redteam-ai" target="_blank" role="button">
+                <svg width="16" height="16" fill="currentColor" viewBox="0 0 16 16" style="margin-right: 0.5rem; vertical-align: middle;">
+                    <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.012 8.012 0 0 0 16 8c0-4.42-3.58-8-8-8z"/>
+                </svg>
+                View on GitHub
+            </a>
+        </footer>
+        
+    </article>
+    
+    
+    
+</section>
+
+<section id="documentation">
+    <h2>Lab Documentation</h2>
+    <p>
+        Detailed technical documentation, infrastructure guides, and session logs available at <a href="https://resurrexi.dev">resurrexi.dev</a>
+    </p>
+    <ul>
+        <li><a href="https://resurrexi.dev/infrastructure">Network Topology & K8s Cluster Architecture</a></li>
+        <li><a href="https://resurrexi.dev/sessions">Implementation Sessions & Technical Write-ups</a></li>
+        <li><a href="https://resurrexi.dev/notes">Research Notes & Experiments</a></li>
+    </ul>
+</section>
+
+    </main>
+
+    <footer class="container">
+        <hr>
+        <p>
+            <strong>Research Areas:</strong> Adversarial AI Systems · Political Economy · Computational Psychology · Infrastructure Engineering
+        </p>
+        <p>
+            <a href="https://farzulla.org">Research Portfolio</a> ·
+            <a href="https://farzulla.com">Personal Site</a> ·
+            <a href="https://github.com/resurrexio">GitHub (Technical)</a> ·
+            <a href="https://github.com/studiofarzulla">GitHub (Academic)</a> ·
+            <a href="https://orcid.org/0009-0002-7164-8704">ORCID</a> ·
+            <a href="https://www.researchgate.net/profile/Murad-Farzulla">ResearchGate</a> ·
+            <a href="https://kcl.academia.edu/MuradFarzulla">Academia.edu</a>
+        </p>
+        <p>
+            <small>7-node K3s cluster · 58 cores · 168GB RAM · 40GB VRAM</small>
+        </p>
+        <p>
+            <small>&copy; 2025 Murad Farzulla · CC-BY-4.0</small>
+        </p>
+    </footer>
+</body>
+</html>

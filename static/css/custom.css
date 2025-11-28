@@ -1,0 +1,317 @@
+/* Custom styling for resurrexi.io */
+
+:root {
+    --primary: #00ff41;
+    --secondary: #0f0;
+    --accent: #ff006e;
+}
+
+/* Logo styling */
+.logo {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    color: inherit;
+}
+
+.logo img {
+    margin-right: 0.75rem;
+}
+
+.logo strong {
+    color: var(--primary);
+    font-size: 1.2rem;
+}
+
+/* Hero section */
+#hero hgroup h1 {
+    color: var(--primary);
+    font-size: 3rem;
+    margin-bottom: 0.5rem;
+}
+
+#hero hgroup p {
+    color: var(--secondary);
+    font-size: 1.5rem;
+    font-style: italic;
+}
+
+#hero .lead {
+    font-size: 1.2rem;
+    line-height: 1.8;
+    margin: 2rem 0;
+}
+
+/* Section styling */
+section {
+    margin: 3rem 0;
+}
+
+section h2 {
+    color: var(--primary);
+    border-bottom: 2px solid var(--primary);
+    padding-bottom: 0.5rem;
+    margin-bottom: 1.5rem;
+}
+
+/* Article cards */
+article {
+    border-left: 3px solid var(--secondary);
+    padding-left: 1.5rem;
+    margin-bottom: 2rem;
+}
+
+article h3 {
+    color: var(--secondary);
+    margin-bottom: 0.5rem;
+}
+
+article h4 {
+    color: var(--accent);
+}
+
+/* Code blocks */
+code {
+    background-color: rgba(0, 255, 65, 0.1);
+    border: 1px solid var(--primary);
+    padding: 0.2rem 0.4rem;
+    border-radius: 4px;
+}
+
+pre code {
+    display: block;
+    padding: 1rem;
+    overflow-x: auto;
+}
+
+/* Keyboard tags */
+kbd {
+    background-color: rgba(0, 255, 65, 0.2);
+    border: 1px solid var(--primary);
+    border-radius: 4px;
+    padding: 0.2rem 0.6rem;
+    font-family: monospace;
+    font-size: 0.9rem;
+}
+
+/* Details/Summary */
+details {
+    border: 1px solid var(--secondary);
+    border-radius: 8px;
+    padding: 1rem;
+    margin: 1rem 0;
+}
+
+summary {
+    color: var(--secondary);
+    cursor: pointer;
+    font-weight: bold;
+    user-select: none;
+}
+
+summary:hover {
+    color: var(--primary);
+}
+
+/* Buttons */
+button[type="submit"],
+[role="button"],
+a[role="button"] {
+    transition: all 0.2s ease;
+}
+
+button[type="submit"]:hover,
+[role="button"]:hover,
+a[role="button"]:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 255, 65, 0.3);
+}
+
+/* Form styling */
+form label {
+    margin-bottom: 1rem;
+}
+
+textarea {
+    min-height: 150px;
+}
+
+/* Grid layout improvements */
+.grid {
+    gap: 1.5rem;
+}
+
+/* Footer */
+footer {
+    margin-top: 4rem;
+    padding-top: 2rem;
+    border-top: 2px solid var(--primary);
+    text-align: center;
+    color: var(--muted-color);
+}
+
+footer a {
+    color: var(--secondary);
+    text-decoration: none;
+}
+
+footer a:hover {
+    color: var(--primary);
+    text-decoration: underline;
+}
+
+/* Blockquote */
+blockquote {
+    border-left: 4px solid var(--accent);
+    padding-left: 1.5rem;
+    font-style: italic;
+    color: var(--muted-color);
+}
+
+/* SVG icons in buttons */
+svg {
+    vertical-align: middle;
+}
+
+/* Success/Error messages */
+article[style*="background-color"] {
+    padding: 1rem;
+    border-radius: 8px;
+    margin-top: 1rem;
+}
+
+/* Responsive typography */
+@media (max-width: 768px) {
+    #hero hgroup h1 {
+        font-size: 2rem;
+    }
+
+    #hero hgroup p {
+        font-size: 1.2rem;
+    }
+
+    #hero .lead {
+        font-size: 1rem;
+    }
+}
+
+/* Nav styling - fix z-index and positioning */
+header {
+    position: relative;
+    z-index: 1000;
+}
+
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+nav ul {
+    gap: 1rem;
+}
+
+nav ul:first-child {
+    flex-shrink: 0;
+}
+
+nav ul:last-child {
+    flex-wrap: wrap;
+}
+
+nav a {
+    color: var(--secondary);
+    text-decoration: none;
+    font-weight: 500;
+}
+
+nav a:hover {
+    color: var(--primary);
+}
+
+/* Publications/Technical Work specific */
+#publications article,
+#projects article {
+    background-color: rgba(0, 0, 0, 0.2);
+    padding: 1.5rem;
+    border-radius: 8px;
+    border-left: 4px solid var(--secondary);
+}
+
+#publications article:hover,
+#projects article:hover {
+    border-left-color: var(--primary);
+    background-color: rgba(0, 255, 65, 0.05);
+}
+
+/* Project cards with expandable details */
+.project-card {
+    background-color: rgba(0, 0, 0, 0.2);
+    border-left: 4px solid var(--secondary);
+    padding: 1.5rem;
+    margin-bottom: 2rem;
+    border-radius: 8px;
+    transition: border-color 0.2s ease;
+}
+
+.project-card:hover {
+    border-left-color: var(--primary);
+    background-color: rgba(0, 255, 65, 0.03);
+}
+
+.project-card h3 {
+    color: var(--secondary);
+    margin-bottom: 0.25rem;
+}
+
+.project-tagline {
+    color: var(--muted-color);
+    font-style: italic;
+    margin: 0.5rem 0 1rem 0;
+    font-size: 1.1rem;
+}
+
+.project-card details {
+    border: none;
+    padding: 0;
+    margin: 1rem 0;
+}
+
+.project-card summary {
+    color: var(--accent);
+    font-size: 0.95rem;
+}
+
+.project-details {
+    margin-top: 1rem;
+    padding-top: 1rem;
+    border-top: 1px solid rgba(0, 255, 65, 0.2);
+}
+
+.project-details h4 {
+    color: var(--secondary);
+    font-size: 1rem;
+    margin: 1rem 0 0.5rem 0;
+}
+
+.project-details ul {
+    margin-left: 1rem;
+    margin-bottom: 1rem;
+}
+
+.project-docs {
+    margin-top: 1.5rem;
+    padding-top: 1rem;
+    border-top: 1px solid rgba(0, 255, 65, 0.1);
+}
+
+.project-docs a {
+    color: var(--accent);
+    font-weight: 600;
+    text-decoration: none;
+}
+
+.project-docs a:hover {
+    color: var(--primary);
+    text-decoration: underline;
+}

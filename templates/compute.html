@@ -1,0 +1,206 @@
+{% extends "base.html" %}
+
+{% block title %}Compute Access - Resurrexi Labs{% endblock %}
+{% block description %}Request access to autonomous research agents for literature review, hypothesis generation, and experimental design{% endblock %}
+
+{% block content %}
+<hgroup>
+    <h1>Compute Access</h1>
+    <p>Autonomous research agents for computational research</p>
+</hgroup>
+
+<section id="overview">
+    <h2>Kosmos-Style Autonomous Research</h2>
+    <p>
+        Resurrexi Labs is building <strong>autonomous research agent infrastructure</strong> to democratize access to AI-assisted research. Think Kosmos-2 multimodal capabilities applied to academic workflows—agents that can read papers, generate hypotheses, design experiments, write code, and produce draft manuscripts.
+    </p>
+    <p>
+        <strong>Current Status:</strong> Infrastructure development in progress. Compute resources available (7-node K8s cluster, 58 cores, 168GB RAM, 40GB VRAM), agent orchestration system under construction.
+    </p>
+</section>
+
+<section id="capabilities">
+    <h2>Planned Capabilities</h2>
+    <div class="grid">
+        <article>
+            <h3>Literature Review</h3>
+            <p>Autonomous paper discovery, citation analysis, synthesis generation. MCP RAG server with K8s-native indexing of arXiv, PubMed, SSRN, academic repositories.</p>
+        </article>
+        <article>
+            <h3>Hypothesis Generation</h3>
+            <p>Pattern recognition across domains, gap identification in existing research, novel connection synthesis via interdisciplinary training data.</p>
+        </article>
+        <article>
+            <h3>Experimental Design</h3>
+            <p>Statistical power analysis, methodology selection, reproducibility planning. Integration with compute cluster for simulation-based validation.</p>
+        </article>
+        <article>
+            <h3>Code Generation</h3>
+            <p>Data analysis pipelines, statistical models, visualization. Support for Python (PyTorch, NumPy, Pandas), R, Julia. Version-controlled experiments.</p>
+        </article>
+    </div>
+</section>
+
+<section id="use-cases">
+    <h2>Ideal Use Cases</h2>
+    <ul>
+        <li><strong>Early-career researchers</strong> without institutional compute access</li>
+        <li><strong>Interdisciplinary projects</strong> requiring literature synthesis across domains</li>
+        <li><strong>Computational validation</strong> of theoretical frameworks (agent-based models, Monte Carlo simulations)</li>
+        <li><strong>Reproducibility studies</strong> re-running experiments with updated data/methods</li>
+        <li><strong>Meta-analyses</strong> requiring large-scale paper processing</li>
+    </ul>
+</section>
+
+<section id="resource-allocation">
+    <h2>Resource Allocation Policy</h2>
+    <p>
+        <strong>Free access</strong> with fair-use resource limits. Priority given to:
+    </p>
+    <ol>
+        <li>Open access research (CC-BY or similar)</li>
+        <li>Reproducible experiments (code + data public)</li>
+        <li>Novel interdisciplinary work</li>
+        <li>Projects from under-resourced institutions</li>
+    </ol>
+    <p>
+        Compute allocated based on project scope, expected runtime, and current cluster utilization. Typical allocation: 4-8 cores, 16-32GB RAM, 24-48 hour runtime.
+    </p>
+</section>
+
+<section id="interest-form">
+    <h2>Request Access</h2>
+    <p>
+        Infrastructure currently under development. Submit your interest below to be notified when autonomous research agents become available.
+    </p>
+
+    <form id="compute-interest-form" action="/api/compute-interest" method="POST">
+        <label for="name">
+            Name
+            <input type="text" id="name" name="name" placeholder="Your name" required>
+        </label>
+
+        <label for="email">
+            Email
+            <input type="email" id="email" name="email" placeholder="researcher@university.edu" required>
+        </label>
+
+        <label for="institution">
+            Institution / Affiliation
+            <input type="text" id="institution" name="institution" placeholder="University, independent researcher, etc.">
+        </label>
+
+        <label for="research-area">
+            Research Area
+            <select id="research-area" name="research_area" required>
+                <option value="">Select primary area...</option>
+                <option value="ai-ml">AI/Machine Learning</option>
+                <option value="political-economy">Political Economy</option>
+                <option value="psychology">Psychology/Neuroscience</option>
+                <option value="finance">Finance/Economics</option>
+                <option value="security">Security/Infrastructure</option>
+                <option value="interdisciplinary">Interdisciplinary</option>
+                <option value="other">Other</option>
+            </select>
+        </label>
+
+        <label for="project-description">
+            Project Description
+            <textarea id="project-description" name="project_description" rows="6" placeholder="Brief description of your research project and how autonomous agents would help..." required></textarea>
+        </label>
+
+        <label for="timeline">
+            Expected Timeline
+            <select id="timeline" name="timeline">
+                <option value="">When would you need access?</option>
+                <option value="asap">As soon as available</option>
+                <option value="1-3months">1-3 months</option>
+                <option value="3-6months">3-6 months</option>
+                <option value="6months+">6+ months</option>
+                <option value="flexible">Flexible</option>
+            </select>
+        </label>
+
+        <label for="open-access">
+            <input type="checkbox" id="open-access" name="open_access" role="switch">
+            I commit to publishing results as open access (CC-BY or similar)
+        </label>
+
+        <label for="reproducible">
+            <input type="checkbox" id="reproducible" name="reproducible" role="switch">
+            I will make code and data publicly available for reproducibility
+        </label>
+
+        <button type="submit">Submit Interest</button>
+    </form>
+
+    <div id="form-response" style="display: none; margin-top: 1rem;">
+        <article id="success-message" style="display: none; background-color: var(--pico-ins-color);">
+            <p><strong>Thank you!</strong> Your interest has been recorded. You'll be notified when compute access becomes available.</p>
+        </article>
+        <article id="error-message" style="display: none; background-color: var(--pico-del-color);">
+            <p><strong>Error:</strong> Failed to submit form. Please email <a href="mailto:murad@farzulla.org">murad@farzulla.org</a> directly.</p>
+        </article>
+    </div>
+</section>
+
+<section id="technical-details">
+    <h2>Technical Infrastructure</h2>
+    <details>
+        <summary>Cluster Specifications</summary>
+        <ul>
+            <li><strong>Control Plane:</strong> AMD Ryzen 9 5900X (12C/24T), 32GB DDR4, 5.5TB storage</li>
+            <li><strong>Primary Compute:</strong> AMD Ryzen 9 9900X (12C/24T), 128GB DDR5, dual GPU (40GB VRAM total)</li>
+            <li><strong>Additional Workers:</strong> 4 nodes providing 34 additional cores</li>
+            <li><strong>Storage:</strong> Custom K8s StorageClass (pwnie-storage) with PersistentVolumes</li>
+            <li><strong>Networking:</strong> 5Gbps fiber, WireGuard VPN, Cloudflare Tunnel</li>
+        </ul>
+    </details>
+    <details>
+        <summary>Software Stack</summary>
+        <ul>
+            <li><strong>Orchestration:</strong> K3s (lightweight Kubernetes)</li>
+            <li><strong>LLM Inference:</strong> LM Studio, vLLM, custom multi-model routing</li>
+            <li><strong>RAG System:</strong> MCP (Model Context Protocol) server with K8s-native indexing</li>
+            <li><strong>Compute:</strong> PyTorch, NumPy, Pandas, R, Julia support</li>
+            <li><strong>Version Control:</strong> Git, automated experiment tracking</li>
+        </ul>
+    </details>
+</section>
+
+<script>
+document.getElementById('compute-interest-form').addEventListener('submit', async function(e) {
+    e.preventDefault();
+
+    const formData = new FormData(this);
+    const data = Object.fromEntries(formData.entries());
+
+    // Convert checkboxes to booleans
+    data.open_access = formData.has('open_access');
+    data.reproducible = formData.has('reproducible');
+
+    try {
+        const response = await fetch('/api/compute-interest', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(data)
+        });
+
+        if (response.ok) {
+            document.getElementById('success-message').style.display = 'block';
+            document.getElementById('error-message').style.display = 'none';
+            document.getElementById('form-response').style.display = 'block';
+            this.reset();
+        } else {
+            throw new Error('Submission failed');
+        }
+    } catch (error) {
+        document.getElementById('error-message').style.display = 'block';
+        document.getElementById('success-message').style.display = 'none';
+        document.getElementById('form-response').style.display = 'block';
+    }
+});
+</script>
+{% endblock %}

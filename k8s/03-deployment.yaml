@@ -1,0 +1,67 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: resurrexi-io
+  namespace: resurrexi-io
+  labels:
+    app: resurrexi-io
+spec:
+  replicas: 1  # Single replica since hostPath is node-bound
+  selector:
+    matchLabels:
+      app: resurrexi-io
+  template:
+    metadata:
+      labels:
+        app: resurrexi-io
+    spec:
+      nodeSelector:
+        kubernetes.io/hostname: sudosenpai
+      containers:
+      - name: flask-app
+        image: python:3.13-slim
+        command: ["/bin/sh"]
+        args:
+          - -c
+          - |
+            pip install --no-cache-dir flask jinja2 markdown pyyaml pygments && \
+            cd /app && \
+            python3 app.py
+        ports:
+        - containerPort: 5000
+          name: http
+        volumeMounts:
+        - name: app-code
+          mountPath: /app
+          readOnly: true
+        - name: submissions
+          mountPath: /data/submissions
+        env:
+        - name: SUBMISSIONS_DIR
+          value: /data/submissions
+        resources:
+          requests:
+            memory: "256Mi"
+            cpu: "100m"
+          limits:
+            memory: "512Mi"
+            cpu: "500m"
+        livenessProbe:
+          httpGet:
+            path: /
+            port: 5000
+          initialDelaySeconds: 30
+          periodSeconds: 10
+        readinessProbe:
+          httpGet:
+            path: /
+            port: 5000
+          initialDelaySeconds: 10
+          periodSeconds: 5
+      volumes:
+      - name: app-code
+        persistentVolumeClaim:
+          claimName: resurrexi-io-storage
+      - name: submissions
+        persistentVolumeClaim:
+          claimName: resurrexi-io-submissions

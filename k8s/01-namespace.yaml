@@ -1,0 +1,7 @@
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: resurrexi-io
+  labels:
+    name: resurrexi-io
+    project: resurrexi-labs

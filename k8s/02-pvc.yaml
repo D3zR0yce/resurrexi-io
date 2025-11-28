@@ -1,0 +1,75 @@
+# Static PV for app code (hostPath on sudosenpai)
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: resurrexi-io-pv
+spec:
+  capacity:
+    storage: 10Gi
+  accessModes:
+    - ReadOnlyMany
+  storageClassName: pwnie-storage
+  persistentVolumeReclaimPolicy: Retain
+  hostPath:
+    path: /mnt/storage/resurrexi-io
+    type: DirectoryOrCreate
+  nodeAffinity:
+    required:
+      nodeSelectorTerms:
+      - matchExpressions:
+        - key: kubernetes.io/hostname
+          operator: In
+          values:
+          - sudosenpai
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: resurrexi-io-storage
+  namespace: resurrexi-io
+spec:
+  accessModes:
+    - ReadOnlyMany
+  storageClassName: pwnie-storage
+  volumeName: resurrexi-io-pv
+  resources:
+    requests:
+      storage: 10Gi
+---
+# Static PV for submissions (needs write access)
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: resurrexi-io-submissions-pv
+spec:
+  capacity:
+    storage: 1Gi
+  accessModes:
+    - ReadWriteOnce
+  storageClassName: pwnie-storage
+  persistentVolumeReclaimPolicy: Retain
+  hostPath:
+    path: /mnt/storage/resurrexi-io-submissions
+    type: DirectoryOrCreate
+  nodeAffinity:
+    required:
+      nodeSelectorTerms:
+      - matchExpressions:
+        - key: kubernetes.io/hostname
+          operator: In
+          values:
+          - sudosenpai
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: resurrexi-io-submissions
+  namespace: resurrexi-io
+spec:
+  accessModes:
+    - ReadWriteOnce
+  storageClassName: pwnie-storage
+  volumeName: resurrexi-io-submissions-pv
+  resources:
+    requests:
+      storage: 1Gi
