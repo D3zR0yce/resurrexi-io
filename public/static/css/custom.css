@@ -145,9 +145,11 @@ nav a:hover, nav a[aria-current="page"] {
     color: var(--text-primary);
 }
 
+/* Logo styling */
 .logo img {
-    height: 36px;
-    width: auto;
+    height: 36px !important;
+    max-height: 36px !important;
+    width: auto !important;
     filter: grayscale(100%) brightness(1.2);
     transition: filter 0.3s;
 }
