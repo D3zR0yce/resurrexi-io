@@ -55,6 +55,11 @@
     }
     </script>
 
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+
     <!-- Pico CSS -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@2/css/pico.min.css">
     <link rel="stylesheet" href="/static/css/custom.css">
@@ -88,13 +93,16 @@
         
 <!-- Hero Section -->
 <section class="hero">
-    <h1>Resurrexi Labs</h1>
-    <p class="tagline">Research Infrastructure for Adversarial Systems Analysis</p>
+    <p class="tagline">System Status: Active // Node Count: 7</p>
+    <h1>Infrastructure for <br><span class="text-teal">Adversarial Systems Analysis</span></h1>
     <p class="lead">
-        Computational research division of <a href="https://farzulla.org" target="_blank">Farzulla Research</a>. 
-        We build and operate distributed infrastructure for experiments in AI alignment, autonomous agents, 
-        offensive security, and large-scale computational simulations.
+        We build distributed compute clusters to study failure modes, offensive security, and AI alignment. 
+        Deliberately heterogeneous. Computationally resilient.
     </p>
+    <div class="cta-group" style="margin-top: 2rem; display: flex; gap: 1rem;">
+        <a href="/infrastructure.html" role="button" class="btn-primary">Cluster Specs</a>
+        <a href="/experiments.html" role="button">Active Research</a>
+    </div>
 </section>
 
 <!-- Infrastructure Overview -->
@@ -112,15 +120,15 @@
             <div class="label">Nodes</div>
         </div>
         <div class="spec-item">
-            <div class="value">58</div>
+            <div class="value">66</div>
             <div class="label">CPU Cores</div>
         </div>
         <div class="spec-item">
-            <div class="value">168GB</div>
+            <div class="value">229GB</div>
             <div class="label">RAM</div>
         </div>
         <div class="spec-item">
-            <div class="value">40GB</div>
+            <div class="value">48GB</div>
             <div class="label">VRAM</div>
         </div>
     </div>
