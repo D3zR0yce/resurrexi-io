@@ -146,6 +146,8 @@ nav a:hover, nav a[aria-current="page"] {
 }
 
 .logo img {
+    height: 36px;
+    width: auto;
     filter: grayscale(100%) brightness(1.2);
     transition: filter 0.3s;
 }

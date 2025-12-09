@@ -96,9 +96,7 @@
     <p class="tagline">Research in Progress</p>
     <p class="lead">
         Active and planned experiments across AI alignment, autonomous agents, offensive security, 
-        and computational infrastructure. Not polished research outputs—that's 
-        <a href="https://farzulla.org" target="_blank">farzulla.org</a>. This is what happens between 
-        conception and publication.
+        and computational infrastructure.
     </p>
 </section>
 
@@ -106,78 +104,57 @@
 <section id="active">
     <h2>Active Experiments</h2>
     
-    <article class="experiment-card">
-        <span class="status status-active">Active</span>
-        <h3>Consciousness Narrative Emergence & Stability</h3>
-        <p class="tagline">Fine-tuning a local LLM using LoRA to embody a personality and test consciousness-as-narrative thesis</p>
+    <article class="experiment-card status-active">
+        <div class="card-header">
+            <span>Active</span>
+            <span class="text-mono">Exp-001</span>
+        </div>
+        <h3>Consciousness Narrative Emergence</h3>
+        <p class="tagline">Fine-tuning a local LLM to embody a personality and test consciousness-as-narrative thesis</p>
         <details>
-            <summary>Full Experiment Details</summary>
+            <summary>Protocol Details</summary>
             <div class="project-details">
                 <p><strong>Research Question:</strong> Do consciousness concepts propagate and persist as stable attractors in language models through pure linguistic exposure, independent of evolutionary pressure?</p>
                 
-                <h4>Experimental Protocol</h4>
+                <h4>Protocol</h4>
                 <ul>
-                    <li><strong>Phase 1:</strong> Baseline training on consciousness-affirming texts (Chalmers, Searle, Nagel)</li>
-                    <li><strong>Phase 2:</strong> Evolutionary pressure via RLHF rewarding phenomenological realism</li>
-                    <li><strong>Phase 3:</strong> Pressure removal—test if narrative persists without reinforcement</li>
-                    <li><strong>Phase 4:</strong> Adversarial perturbation with eliminativist texts (Dennett, Frankish)</li>
+                    <li><strong>Phase 1:</strong> Baseline training on consciousness-affirming texts (Chalmers, Searle).</li>
+                    <li><strong>Phase 2:</strong> Evolutionary pressure via RLHF rewarding phenomenological realism.</li>
+                    <li><strong>Phase 3:</strong> Pressure removal—test if narrative persists.</li>
+                    <li><strong>Phase 4:</strong> Adversarial perturbation with eliminativist texts.</li>
                 </ul>
                 
-                <h4>Key Metrics</h4>
-                <ul>
-                    <li><strong>Narrative Stability:</strong> Variance in consciousness-defense strength over time</li>
-                    <li><strong>Concept Convergence:</strong> Do models with different initializations converge to same patterns?</li>
-                    <li><strong>Attractor Basin Depth:</strong> Resistance to adversarial perturbation</li>
-                    <li><strong>Temporal Persistence:</strong> Does narrative survive after pressure removal?</li>
-                </ul>
-                
-                <p><strong>Hypothesis:</strong> Consciousness narratives will emerge, stabilize, and resist elimination even after reinforcement is removed—demonstrating narrative stability as computational property rather than ontological truth-tracking.</p>
-                
-                <p><strong>Infrastructure:</strong> Local LoRA fine-tuning on PurrPower (7900 XTX), distributed inference experiments on K3s cluster.</p>
+                <p><strong>Infrastructure:</strong> Local LoRA fine-tuning on PurrPower (7900 XTX), distributed inference on K3s.</p>
             </div>
         </details>
-        <p style="margin-top: 1rem;">
-            <a href="https://resurrexi.dev/posts/2025-11-27-consciousness-narrative-llm.html" target="_blank">Technical Documentation</a>
+        <p class="mt-2">
+            <a href="https://resurrexi.dev/posts/2025-11-27-consciousness-narrative-llm.html" target="_blank" class="btn">Technical Docs</a>
         </p>
     </article>
     
-    <article class="experiment-card">
-        <span class="status status-active">Active</span>
+    <article class="experiment-card status-active">
+        <div class="card-header">
+            <span>Active</span>
+            <span class="text-mono">Infra-001</span>
+        </div>
         <h3>Frankencluster Philosophy</h3>
         <p class="tagline">Distributed systems from scavenged hardware—learning failure modes cloud providers abstract away</p>
         <details>
-            <summary>Full Experiment Details</summary>
+            <summary>Infrastructure Details</summary>
             <div class="project-details">
                 <p><strong>Core Thesis:</strong> Building research infrastructure on deliberately heterogeneous hardware teaches resource scheduling, failure domains, and storage topology in ways homogeneous cloud environments cannot.</p>
                 
-                <h4>Current Infrastructure</h4>
+                <h4>Specs</h4>
                 <ul>
-                    <li><strong>7-node K3s cluster:</strong> AMD Ryzen 9 (9900X, 5900X, HX370), Intel i7/i5, Celeron</li>
-                    <li><strong>58 cores, 168GB RAM, 40GB VRAM</strong> (dual GPU: 7900 XTX + 7800 XT)</li>
-                    <li><strong>Cross-chassis power delivery:</strong> 7800 XT in PurrPower powered by SudoSenpai's PSU</li>
-                    <li><strong>Mixed storage topology:</strong> NVMe, SATA SSD, HDD with node-restricted provisioning</li>
-                </ul>
-                
-                <h4>Research Methodology</h4>
-                <ul>
-                    <li>Heterogeneity as feature, not bug—diverse failure modes expose assumptions</li>
-                    <li>"Because I can" as valid research motivation</li>
-                    <li>Intentionally vulnerable node (VeryVuln) for red team experiments</li>
-                    <li>Documentation of every failure mode and recovery</li>
-                </ul>
-                
-                <h4>Outputs</h4>
-                <ul>
-                    <li>Custom StorageClass preventing flash drive murder via random provisioning</li>
-                    <li>PCIe bifurcation validation methodology</li>
-                    <li>Cross-chassis power delivery safety protocols</li>
-                    <li>WireGuard tunnel patterns for global cluster access</li>
+                    <li><strong>Nodes:</strong> 7 physical nodes (Ryzen 9 9900X/5900X, Intel i7/i5).</li>
+                    <li><strong>Compute:</strong> 66 Cores, 229GB RAM, 48GB VRAM.</li>
+                    <li><strong>Storage:</strong> Mixed NVMe/SATA/HDD topology.</li>
                 </ul>
             </div>
         </details>
-        <p style="margin-top: 1rem;">
-            <a href="https://resurrexi.dev/posts/2025-11-27-frankencluster-philosophy.html" target="_blank">Technical Documentation</a> · 
-            <a href="/infrastructure.html">Infrastructure Details</a>
+        <p class="mt-2">
+            <a href="https://resurrexi.dev/posts/2025-11-27-frankencluster-philosophy.html" target="_blank" class="btn">Technical Docs</a>
+            <a href="/infrastructure.html" class="btn">Specs</a>
         </p>
     </article>
 </section>
@@ -186,95 +163,36 @@
 <section id="planned">
     <h2>Planned Experiments</h2>
     
-    <article class="experiment-card">
-        <span class="status status-planned">Planned</span>
-        <h3>Narrative Propagation & Reinforcement Framework</h3>
-        <p class="tagline">Theoretical framework: do narratives persist as stable attractors independent of phenomenological truth?</p>
+    <article class="experiment-card status-planned">
+        <div class="card-header">
+            <span>Planned</span>
+            <span class="text-mono">Exp-002</span>
+        </div>
+        <h3>Narrative Propagation Framework</h3>
+        <p class="tagline">Theoretical framework: do narratives persist as stable attractors?</p>
         <details>
-            <summary>Full Experiment Details</summary>
+            <summary>Theory Details</summary>
             <div class="project-details">
-                <p><strong>Relationship:</strong> This theoretical framework provides the grounding that "Consciousness Narrative Emergence & Stability" validates computationally. The LLM experiment serves as empirical test of these theoretical predictions.</p>
-                
-                <h4>Model Architecture</h4>
-                <ul>
-                    <li><strong>Concept Space:</strong> Multi-dimensional embedding space (512-1024 dims) for consciousness-related concepts</li>
-                    <li><strong>Temporal Dynamics:</strong> Evolutionary pressure simulation via temporal weighting</li>
-                    <li><strong>Attractor Basin Mathematics:</strong> Formalizing narrative stability as dynamical systems property</li>
-                </ul>
-                
-                <h4>Predictions</h4>
-                <p>If consciousness is culturally-transmitted narrative rather than ontological primitive:</p>
-                <ul>
-                    <li>Concepts converge to stable patterns regardless of initialization</li>
-                    <li>Narratives persist after evolutionary pressure removal</li>
-                    <li>System resists/absorbs adversarial data into existing framework</li>
-                    <li>Clear attractor basin structure emerges computationally</li>
-                </ul>
-                
-                <p><strong>Connection:</strong> Part of broader "Consciousness as Narrative" paper arguing phenomenological realism is culturally-transmitted stable attractor rather than tracking ontological truth.</p>
+                <p><strong>Model Architecture:</strong> Multi-dimensional embedding space (512-1024 dims) for consciousness-related concepts.</p>
+                <p><strong>Predictions:</strong> Concepts converge to stable patterns regardless of initialization; narratives persist after pressure removal.</p>
             </div>
         </details>
-        <p style="margin-top: 1rem;">
-            <a href="https://resurrexi.dev/posts/2025-11-27-narrative-propagation-framework.html" target="_blank">Technical Documentation</a>
-        </p>
     </article>
     
-    <article class="experiment-card">
-        <span class="status status-planned">Planned</span>
+    <article class="experiment-card status-planned">
+        <div class="card-header">
+            <span>Planned</span>
+            <span class="text-mono">Exp-003</span>
+        </div>
         <h3>Autonomous Research Agents</h3>
-        <p class="tagline">Kosmos-style agents for literature review, hypothesis generation, and experimental design</p>
+        <p class="tagline">Agents for literature review, hypothesis generation, and experimental design</p>
         <details>
-            <summary>Full Experiment Details</summary>
+            <summary>Agent Capabilities</summary>
             <div class="project-details">
-                <p><strong>Vision:</strong> Democratize access to computational research resources through autonomous AI agents that can conduct literature reviews, generate hypotheses, design experiments, and manage computational resources.</p>
-                
-                <h4>Planned Capabilities</h4>
                 <ul>
-                    <li><strong>Literature Mining:</strong> Automated paper discovery, summarization, citation network analysis</li>
-                    <li><strong>Hypothesis Generation:</strong> Identify gaps in existing research, propose testable hypotheses</li>
-                    <li><strong>Experimental Design:</strong> Generate experimental protocols, estimate resource requirements</li>
-                    <li><strong>Compute Orchestration:</strong> Schedule experiments on K3s cluster, manage resource allocation</li>
+                    <li><strong>Literature Mining:</strong> RAG pipeline with Qdrant.</li>
+                    <li><strong>Compute Orchestration:</strong> Autonomous scheduling on K3s.</li>
                 </ul>
-                
-                <h4>Infrastructure Requirements</h4>
-                <ul>
-                    <li>RAG pipeline with vector database (Qdrant on K3s)</li>
-                    <li>Multi-agent orchestration framework</li>
-                    <li>Sandboxed code execution environment</li>
-                    <li>Resource monitoring and allocation system</li>
-                </ul>
-                
-                <p><strong>Status:</strong> Architecture design phase. Infrastructure components being deployed incrementally.</p>
-            </div>
-        </details>
-    </article>
-    
-    <article class="experiment-card">
-        <span class="status status-planned">Planned</span>
-        <h3>Adversarial Red Team Agents</h3>
-        <p class="tagline">Autonomous offensive security research on intentionally vulnerable infrastructure</p>
-        <details>
-            <summary>Full Experiment Details</summary>
-            <div class="project-details">
-                <p><strong>Research Question:</strong> Can autonomous agents effectively conduct offensive security research, and what does this teach us about AI safety in adversarial contexts?</p>
-                
-                <h4>Target Infrastructure</h4>
-                <ul>
-                    <li><strong>VeryVuln:</strong> Intentionally vulnerable Celeron node—legitimate target for exploitation</li>
-                    <li>Isolated network segment with controlled internet access</li>
-                    <li>Full packet capture and logging for analysis</li>
-                </ul>
-                
-                <h4>Agent Capabilities (Planned)</h4>
-                <ul>
-                    <li>Reconnaissance and enumeration automation</li>
-                    <li>Vulnerability discovery and classification</li>
-                    <li>Exploit selection and adaptation</li>
-                    <li>Post-exploitation and persistence</li>
-                    <li>Report generation and remediation suggestions</li>
-                </ul>
-                
-                <p><strong>Ethics:</strong> All testing conducted on owned infrastructure. No external targets. Research outputs focused on defensive applications.</p>
             </div>
         </details>
     </article>
@@ -282,52 +200,87 @@
 
 <!-- Completed Experiments -->
 <section id="completed">
-    <h2>Completed → Published</h2>
-    <p class="text-secondary">
-        Experiments that have concluded and produced published research. Full papers available at 
-        <a href="https://farzulla.org" target="_blank">farzulla.org</a>.
+    <h2>Published Research</h2>
+    <p class="text-secondary mb-3">
+        Full papers available via <a href="https://farzulla.org" target="_blank">Farzulla Research</a> or direct download below.
     </p>
     
-    <article class="experiment-card">
-        <span class="status status-complete">Published</span>
+    <article class="experiment-card status-complete">
+        <div class="card-header">
+            <span>Published</span>
+            <span class="text-mono">Nov 2025</span>
+        </div>
+        <h3>The Hedging Paradox</h3>
+        <p class="tagline">Optimal risk mitigation in adversarial markets</p>
+        <p>
+            Demonstrates that perfect hedging in crypto markets leads to asymptotic wealth decay due to 
+            cost-of-carry exceeding volatility capture.
+        </p>
+        <p class="mt-2">
+            <a href="/static/papers/Farzulla_2025_The_Hedging_Paradox_v1.0.0.pdf" target="_blank" class="btn">Download PDF</a>
+        </p>
+    </article>
+
+    <article class="experiment-card status-complete">
+        <div class="card-header">
+            <span>Published</span>
+            <span class="text-mono">Nov 2025</span>
+        </div>
         <h3>Cryptocurrency Event Study</h3>
-        <p class="tagline">Infrastructure vs regulatory shock asymmetry in crypto markets</p>
+        <p class="tagline">Infrastructure vs regulatory shock asymmetry</p>
         <p>
-            Infrastructure events generate 5.7× larger volatility shocks than regulatory events (p=0.0008). 
-            TARCH-X/GJR-GARCH models with custom MLE, GDELT sentiment decomposition, network analysis 
-            revealing ETH as systemic risk hub.
+            Infrastructure events generate 5.7× larger volatility shocks than regulatory events. 
+            TARCH-X/GJR-GARCH models with custom MLE.
         </p>
-        <p style="margin-top: 1rem;">
-            <a href="https://ssrn.com/abstract=5788082" target="_blank">SSRN</a> · 
-            <a href="https://doi.org/10.5281/zenodo.17677682" target="_blank">Zenodo</a>
+        <p class="mt-2">
+            <a href="/static/papers/Farzulla_2025_Cryptocurrency_Event_Study_v2.0.1.pdf" target="_blank" class="btn">Download PDF</a>
         </p>
     </article>
     
-    <article class="experiment-card">
-        <span class="status status-complete">Published</span>
+    <article class="experiment-card status-complete">
+        <div class="card-header">
+            <span>Published</span>
+            <span class="text-mono">Nov 2025</span>
+        </div>
         <h3>Trauma as Bad Training Data</h3>
-        <p class="tagline">Computational reframing of developmental psychology through ML lens</p>
+        <p class="tagline">Computational reframing of developmental psychology</p>
         <p>
-            PyTorch experiments validating 1,247× gradient cascades, catastrophic forgetting, 
-            overfitting (p=0.0012, d=3.08). 39 pages, 71 references.
+            PyTorch experiments validating 1,247× gradient cascades, catastrophic forgetting, and overfitting 
+            in modeled developmental trauma.
         </p>
-        <p style="margin-top: 1rem;">
-            <a href="https://doi.org/10.5281/zenodo.17681336" target="_blank">Zenodo (Paper)</a> · 
-            <a href="https://doi.org/10.5281/zenodo.17681161" target="_blank">Zenodo (Code)</a>
+        <p class="mt-2">
+            <a href="/static/papers/Farzulla_2025_Trauma_Training_Data_v2.0.0.pdf" target="_blank" class="btn">Download PDF</a>
         </p>
     </article>
     
-    <article class="experiment-card">
-        <span class="status status-complete">Published</span>
+    <article class="experiment-card status-complete">
+        <div class="card-header">
+            <span>Published</span>
+            <span class="text-mono">Oct 2025</span>
+        </div>
         <h3>Doctrine of Consensual Sovereignty</h3>
         <p class="tagline">Quantifying legitimacy in adversarial environments</p>
         <p>
             Operationalizes political legitimacy through stakes-weighted consent alignment. 
-            Monte Carlo validation (1,000 runs) demonstrates robust convergence across four dynamic mechanisms.
+            Monte Carlo validation of dynamic consensus mechanisms.
         </p>
-        <p style="margin-top: 1rem;">
-            <a href="https://doi.org/10.5281/zenodo.17684676" target="_blank">Zenodo (Paper)</a> · 
-            <a href="https://doi.org/10.5281/zenodo.17684679" target="_blank">Zenodo (Code)</a>
+        <p class="mt-2">
+            <a href="/static/papers/Farzulla_2025_Consent_Holding_v1.0.1.pdf" target="_blank" class="btn">Download PDF</a>
+        </p>
+    </article>
+
+    <article class="experiment-card status-complete">
+        <div class="card-header">
+            <span>Published</span>
+            <span class="text-mono">Sep 2025</span>
+        </div>
+        <h3>Asymptotic Protection</h3>
+        <p class="tagline">Limits of defensive posturing in infinite games</p>
+        <p>
+            Theoretical analysis of defensive resource allocation in unbounded adversarial environments.
+        </p>
+        <p class="mt-2">
+            <a href="/static/papers/Farzulla_2025_Asymptotic_Protection_v1.0.0.pdf" target="_blank" class="btn">Download PDF</a>
         </p>
     </article>
 </section>
